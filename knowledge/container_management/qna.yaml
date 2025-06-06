@@ -537,7 +537,7 @@ seed_examples:
           In der deployment YAML Datei kann unter dem Pfad spec.containers.image das genaue Image spezifiziert werden.
 document:
   repo: 'https://github.com/jmo2k02/rhoai_sc_q2_taxonomy.git'
-  commit: 11317c111e893dc3f9fb3a7f169dc26e4c24bee8
+  commit: 40e9e124433769d76b5bc6e1446733bf1b3f5ed6
   patterns:
     - 'taxonomy\knowledge\container_management\confluence_page_How to - Image Annahme und HELM Chart Annahme-with-image-refs.md'
     - 'taxonomy\knowledge\container_management\confluence_page_How to - Registry (Quay)-with-image-refs.md'
