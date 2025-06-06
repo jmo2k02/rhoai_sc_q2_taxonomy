@@ -1,0 +1,552 @@
+# 1. context: How to - Image Annahme und HELM Chart Annahme
+# # Fokus auf Vertrauenswürdige Quellen für Container Images
+# 2. context: How to - Image Annahme und HELM Chart Annahme
+# # Fokus auf Vertrauenswürdige Quellen für Helm Charts
+# 2. context: How to - Zugriff auf Basis Images
+# 3. context: How to - Vorgabe zum Erstellen von Container Images
+# 4. context: How to - Registry (Quay)
+version: 1
+domain: Container Management
+created_by: jm02k02
+document_outline: |
+  Informationen zum Handhaben von Container Images und Helm Charts auf der unternehmensinternen Containerplattform.
+seed_examples:
+  # ######### #
+  # Context 1 #
+  # ######### #
+  - context: |
+      ## 2.  Voraussetzungen
+
+      - Gültiges Benutzerkonto für die OpenShift Container Platform
+      - Zugehörigkeit zu einem Applikationsteam mit entsprechenden Berechtigungen
+      - Grundlegende Kenntnisse über Container und Helm Charts
+      - Zugang zum internen Registry-Service
+      - Installierte OpenShift CLI (`oc`)
+      - Optional: Installierte Helm CLI für lokale Tests## 2 Voraussetzungen
+
+      ## 3.  Pr ü fung   auf   vertrauensw ü rd i ge   Quellen
+
+      Vor dem Import von Container Images und Helm Charts ist eine sorgfältige Prüfung der Quellen erforderlich, um die Sicherheit und Compliance der Plattform zu gewährleisten.
+
+      ## 3 . 1 Bewertung   von   Conta i ner   Image   Quellen
+
+      ## Vertrauensw ü rd i ge   Reg i str i es :
+
+      - Docker Hub ( Docker: Accelerated Container Application Development  ) - nur für offizielle Images und verifizierte Publisher
+      - Red Hat Container Catalog ( Home - Red Hat Ecosystem Catalog  )
+      - Quay   ( Quay  ) - bevorzugt für Red Hat und Community Images
+      - Bitnami Registry für etablierte Anwendungsstacks
+
+      ## Si cherhe i tskr i ter i en   f ü r   Images :
+
+      - Verwendung von offiziellen Base Images (alpine, ubuntu, centos-stream, ubi)
+      - Aktuelle Sicherheitsupdates und Patch-Level
+      - Minimale Anzahl bekannter Vulnerabilities (CVE-Score &lt; 7.0)
+      - Dokumentierte Dockerfile und Transparenz der Build-Prozesse
+      - Regelmäßige Updates durch den Maintainer
+
+    questions_and_answers:
+      - question: |
+          Welche Sicherheitskriterien müssen nach den Vorgaben unserer Plattform für die Bewertung von Container Images verwendet werden?
+        answer: |
+          Die folgenden Sicherheitskriterien sind von unserem Plattformteam zur Bewertung vorgegeben.
+          - Es sollen nur offizielle Base Images verwendet werden (alpine, ubuntu, centos-stream, ubi)
+          - Aktuelle Sicherheitsupdates und Patch-Level
+          - Minimale Anzahl bekannter Vulnerabilities (CVE-Score &lt; 7.0)
+          - Dokumentierte Dockerfile und Transparenz der Build-Prozesse
+          - Regelmäßige Updates durch den Maintainer
+      - question: |
+          Welche Container Registries werden von unserer Plattform als vertrauenswürdig eingestuft?
+        answer: |
+          Die folgenden Container Registries werden von unserem Plattformteam als vertrauenswürdig eingestuft.
+            - Docker Hub ( Docker: Accelerated Container Application Development  ) - nur für offizielle Images und verifizierte Publisher
+            - Red Hat Container Catalog ( Home - Red Hat Ecosystem Catalog )
+            - Quay (Quay) - bevorzugt für Red Hat und Community Images
+            - Bitnami Registry für etablierte Anwendungsstacks
+      - question: |
+          Welche Voraussetzungen sind notwendig für die Image Annahme?
+        answer: |
+          Bevor der Annahme Prozess für die Images gestartet wird, müssen folgende Voraussetzungen erfüllt sein.
+          - Gültiges Benutzerkonto für die OpenShift Container Platform
+          - Zugehörigkeit zu einem Applikationsteam mit entsprechenden Berechtigungen
+          - Grundlegende Kenntnisse über Container und Helm Charts
+          - Zugang zum internen Registry-Service
+          - Installierte OpenShift CLI (`oc`)
+  # ######### #
+  # Context 2 #
+  # ######### #
+  - context: |
+      ## 3.2 Bewertung   von   Helm   Chart   Quellen
+
+      ## Vertrauensw ü rd i ge   Helm   Repos i tor i es :
+
+      - Artifact Hub ( Artifact Hub  ) - zentraler Hub für Helm Charts
+      - Bitnami Charts (charts.bitnami.com/bitnami)
+      - Elastic Charts (helm.elastic.co)
+      - Prometheus Community ( Prometheus Community Kubernetes Helm Charts  )
+      - Ingress NGINX ( Welcome - Ingress-Nginx Controller  )
+
+      ## Qual i t ä tskr i ter i en   f ü r   Helm   Charts :
+
+      - Wartung durch etablierte Organisationen oder Communities
+      - Regelmäßige Updates und Versionszyklen
+      - Umfassende Dokumentation und Konfigurationsoptionen
+      - Verwendung von bewährten Kubernetes-Praktiken
+      - Aktive Community und Support
+
+      ## 4.  Schr i tt-f ü r-Schr i tt   Anle i tung
+
+      ## 4 . 1 Image   Annahme
+
+      Das Bild zeigt ein orangefarbenes Warnsymbol in Form eines Dreiecks, das mit einem weißen Ausrufezeichen in der Mitte versehen ist. Der Hintergrund des Symbols ist hellgelb, wodurch das Dreieck und das Ausrufezeichen deutlich hervorgehoben werden. Dieses Symbol wird häufig verwendet, um auf eine Warnung oder eine potenzielle Gefahr hinzuweisen.
+
+      ## 4. 1 . 1   Ident i f iz i erung   des   ben ö t i gten   Images
+
+      1. Ermitteln Sie die genaue Image-Referenz (Repository und Tag), die Sie importieren möchten.
+      Beispiel: `docker.io/nginx:1.21.0`
+
+      2. Prüfen Sie, ob das Image bereits in der internen Registry vorhanden ist:
+      ```bash
+      oc get is -n <namespace>;
+      ```
+    questions_and_answers:
+      - question: |
+          Welche Helm Repositories werden von unserer Plattform als vertrauenswürdig eingestuft?
+        answer: |
+          Es gibt verschiedene in der Container Plattform als vertrauenswürdig eingestufte Helm Repositories.
+          - Artifact Hub - zentraler Hub für Helm Charts
+          - Bitnami Charts
+          - Elastic Charts
+          - Prometheus Community
+          - Ingess NGINX
+      - question: |
+          Welche Qualitätskriterien müssen für Helm Charts erfüllt sein?
+        answer: |
+          Es gibt verschiedene Qualitätskriterien, die für die Bewertung eines Helm Charts eingesetzt werden.
+          - Sie müssen durch etablierte Organisationen oder Communities gewartet werden
+          - Es muss regelmäßige Updates und Versionszyklen geben
+          - Umfassende Dokumentation und Konfigurationsoptionen müssen vorhanden sein.
+          - Bewährte Kubernetes-Praktiken sollten angewendet werden
+          - Es muss auf eine aktive Community und Support geachtet werden
+      - question: |
+          Was muss ich genau angeben um ein Image zu importieren?
+        answer: |
+          Um ein Image zu importieren muss die genaue Image Referenz angegeben werden.
+          Dafür müssen das Repository und der Tag angegeben werden. 
+          Beispiel: `docker.io/nginx:1.21.0`
+  # ######### #
+  # Context 3 #
+  # ######### #
+  - context: |
+      3. Verfügbare Basis-Images
+
+      Alle folgenden Images sind im Cluster frei und ohne Einschränkungen verfügbar. 
+      Sie können für das Erstellen von Containern genutzt werden. 
+
+      Viele der offiziellen und subskriptionsfreien RedHat Universal Build Images (UBI) sind auf der Plattform verfügbar. 
+      Diese Images sind in der Quay-Organisation `plattform-base-images` unter folgender URL erhältlich:
+      
+      `cpk.quay.asg.net/plattform-base-images/<repo>`
+
+      OpenJDK Runtime Images
+
+      OpenJDK 21 (Latest LTS) - UBI 8:
+      cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21
+      cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21-runtime
+
+      OpenJDK 17 (LTS) - UBI 9:
+      cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17
+      cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17-runtime
+
+      Python Runtime Images
+
+      Python 3.12 (Latest):
+      cpk.quay.asg.net/plattform-base-images/ubi9/python-312
+      cpk.quay.asg.net/plattform-base-images/ubi8/python-312
+
+      Python 3.11:
+      cpk.quay.asg.net/plattform-base-images/ubi9/python-311
+      cpk.quay.asg.net/plattform-base-images/ubi8/python-311
+
+      Python 3.10:
+      cpk.quay.asg.net/plattform-base-images/ubi9/python-310
+      cpk.quay.asg.net/plattform-base-images/ubi8/python-310
+    questions_and_answers:
+      - question: |
+          Welche Basis-Images für Python Applikationen sind im Cluster verfügbar?
+        answer: |
+          Die verfügbaren Images für Python Applikationen sind:
+          Python 3.12 (Latest):
+            - cpk.quay.asg.net/plattform-base-images/ubi9/python-312
+            - cpk.quay.asg.net/plattform-base-images/ubi8/python-312
+
+          Python 3.11:
+            - cpk.quay.asg.net/plattform-base-images/ubi9/python-311
+            - cpk.quay.asg.net/plattform-base-images/ubi8/python-311
+
+          Python 3.10:
+            - cpk.quay.asg.net/plattform-base-images/ubi9/python-310
+            - cpk.quay.asg.net/plattform-base-images/ubi8/python-310
+      - question: |
+          Wie kann ich auf die Plattform internen Universal Base Images zugreifen?
+        answer: |
+          Die bereitgestellten Universal Base Images (UBIs) sind in der Quay-Organisation `plattform-base-images`
+          unter folgender URL aufzufinden:
+          `cpk.quay.asg.net/plattform-base-images/<repo>`
+      - question: |
+          Welche Images kann ich für das erstellen von Java OpenJDK Containern verwenden?
+        answer: |
+          Die verfügbaren Images sind:
+          OpenJDK 21 (Latest LTS) - UBI 8:
+            - cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21
+            - cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21-runtime
+
+          OpenJDK 17 (LTS) - UBI 9:
+            - cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17
+            - cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17-runtime
+  # ######### #
+  # Context 4 #
+  # ######### #
+  - context: |
+      4. Schritt-für-Schritt Anleitung
+
+      3.1 Verwendung in einem Dockerfile
+
+      Um ein Basis-Image in einem Dockerfile zu verwenden, geben Sie die vollständige URL des Images an:
+
+
+      # Beispiel für die Verwendung eines Node.js Basis-Images
+      FROM cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21
+
+      WORKDIR /app
+
+      COPY target/app.jar app.jar
+
+      EXPOSE 8080
+
+      CMD ["java", "-jar", "app.jar"]
+
+
+      3.3 Verwendung in einer OpenShift YAML-Datei
+
+      Um einen Pod mit einem Basis-Image zu starten, verwenden Sie die folgende YAML-Konfiguration:
+
+
+      apiVersion: v1
+      kind: Pod
+      metadata:
+        name: meine-anwendung
+      spec:
+        containers:
+        - name: app-container
+          image: cpk.quay.asg.net/plattform-base-images/ubi9/python-310
+          ports:
+          - containerPort: 8080
+
+
+      3.4 Auswahl der richtigen Tags
+
+      Die Wahl des richtigen Image-Tags ist entscheidend für die Stabilität Ihrer Anwendung:
+
+      *Für Entwicklungsumgebungen:*
+
+      Verwenden Sie flexible Tags für schnelle Iteration und automatische Updates
+
+      Beispiel: `<image>:<major.minor>` wie `node:18` oder `alpine:3.18`
+
+      *Für Produktionsumgebungen:*
+
+      Verwenden Sie immer vollständige Versionsnummern
+
+      Beispiel: `<image>:<vollständige-version>` wie `node:18.17.1` oder `python:3.11.4`
+
+      Vermeiden Sie `latest` oder Major-Tags in Produktionsumgebungen
+
+      3.5 Anfordern zusätzlicher Images
+
+      Wenn Sie ein Basis-Image benötigen, das nicht verfügbar ist:
+
+      1. Senden Sie eine E-Mail an plattform@team.de
+      2. Geben Sie an, welches Image Sie benötigen und wofür
+      3. Das Plattformteam wird das gewünschte Image bereitstellen
+    questions_and_answers:
+      - question: |
+          Wie kann ich ein Basis-Image in einem Dockerfile verwenden?
+        answer: |
+          Um ein Basis-Image in einem Dockerfile zu verwenden, geben Sie die vollständige URL des Images an.
+          ``Dockerfile
+          FROM cpk.quay.asg.net/plattform-base-images/ubi8/python-312
+          ```
+      - question: |
+          Wie kann ich ein Basis-Image beantragen, welches nicht im Cluster verfügbar ist?
+        answer: |
+          Um ein im Cluster nicht vorhandenes Basis Image zu beantragen, folge bitte diesen 3 Schritten.
+          1. Senden Sie eine E-Mail an plattform@team.de
+          2. Geben Sie an, welches Image Sie benötigen und wofür
+          3. Das Plattformteam wird das gewünschte Image bereitstellen
+      - question: |
+          Wie wähle ich einen richtigen Tag für einen Containerfile der in einer Produktionsumgebung verwendet werden soll?
+        answer: |
+          Für einen Tag der in einer Produktionsumgebung verwendet wird, muss immer die vollständige Versionsnummer verwendet werden.
+          Darüber hinaus müssen auch unbedingt `latest` oder Major-Tags vermieden werden.
+          Beispiel : `<image>:<vollständige-version>`
+  # ######### #
+  # Context 5 #
+  # ######### #
+  - context: |
+      3. Schritt-für-Schritt Anleitung
+      3.1 Implementierung der erforderlichen Labels
+      Jedes Container-Image MUSS die folgenden OpenContainers-Labels enthalten:
+
+      # Beispiel für Dockerfile-Labels
+      LABEL org.opencontainers.image.created="2023-05-15T09:00:00Z" \
+            org.opencontainers.image.vendor="Meine Firma GmbH" \
+            org.opencontainers.image.authors="team@meinefirma.de" \
+            org.opencontainers.image.source="https://github.com/meinefirma/meine-app" \
+            org.opencontainers.image.revision="a1b2c3d4e5f6" \
+            org.opencontainers.image.title="Meine Anwendung" \
+            org.opencontainers.image.description="Beschreibung meiner Anwendung" \
+            org.opencontainers.image.version="1.0.0"
+
+      2. Einrichtung der Build-Log-Speicherung
+      Um die Nachvollziehbarkeit zu gewährleisten, müssen alle Build-Logs gespeichert werden. Hierfür wird die ClusterTask "save-pipeline-logs" verwendet.
+
+      Integration in Ihre Pipeline:
+
+      2. Starten Sie die Pipeline mit den erforderlichen Parametern:
+
+      oc create -f - <<EOF
+      apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: meine-anwendung-pipeline-run-
+      spec:
+        pipelineRef:
+          name: meine-anwendung-pipeline
+        params:
+          - name: git-url
+            value: "https://github.com/meinefirma/meine-app"
+          - name: git-revision
+            value: "main"
+          - name: image-name
+            value: "image-registry.openshift-image-registry.svc:5000/mein-projekt/meine-anwendung"
+          - name: image-tag
+            value: "1.0.0"
+        workspaces:
+          - name: shared-workspace
+            persistentVolumeClaim:
+              claimName: meine-pipeline-pvc
+      EOF
+    questions_and_answers:
+      - question: |
+          Worauf muss ich alles achten, wenn ich ein Container Image im Cluster erstellen möchte?
+        answer: |
+          Die Muss-Kriterien für das erstellen von Container-Images sind:
+          1. Implementierung aller erforderlichen Labels
+            - Diese Labels erlauben die Ablage von Metadaten in Container-Images.
+            - Die Labels *MÜSSEN* gesetzt werden.
+          2. Einrichtung der Build-Log Speicherung
+            - Container builds innerhalb des Clusters müssen eine saubere Nachvollziehbarkeit ermöglichen.
+            - Dafür liegt im Cluster eine ClusterTask namens "save-pipeline-logs" bereit.
+            - Diese muss in die Container Build Pipeline integriert werden um die Logs zu persistieren.
+      - question: |
+          An welcher Stelle müssen die Labels hinzugefügt werden.
+        answer: |
+          Die Labels müssen innerhalb des Containerfiles angegeben werden.
+          Benutze dafür einfach die Anweisung `LABEL` im Containerfile.
+      - question: |
+          Wie kann ich eine Container Build Pipeline ausführen?
+        answer: |
+          Um eine Build Pipeline auszuführen, muss zuerst eine Pipeline erstellt worden sein.
+          Stellen sie sicher, dass eine Pipeline definiert ist.
+          Um die Pipeline dann zu starten muss eine PipelineRun Ressource im Cluster erstellt werden, welche die pipeline referenziert
+          und die nötigen Parameter übergibt.
+          Beispiel:
+          ```yaml
+          apiVersion: tekton.dev/v1beta1
+          kind: PipelineRun
+          metadata:
+            generateName: meine-anwendung-pipeline-run-
+          spec:
+            pipelineRef:
+              name: <hier-pipeline-referenz-angeben>
+            params:
+              <hier-parameter-übergeben>
+          ```
+  # ######### #
+  # Context 6 #
+  # ######### #
+  - context: |
+      3. Schritt-für-Schritt Anleitung
+      3.1 Zugriff auf die Registry
+      Die Registry ist unter folgender URL erreichbar:
+
+      cpk.quay.asg.net
+
+      Die URL eines Applikationsteam-Images folgt diesem Schema:
+
+      cpk.quay.asg.net/<app-team-name>-<umgebung>/<repo>:<tag>
+
+      3.2 Anmeldung an der Registry
+      3.2.1 Web-Interface Login
+      1. Navigieren Sie zur Registry-URL: 
+
+      cpk.quay.asg.net
+      2. Klicken Sie auf den "Log in"-Button
+      3. Sie werden zum SSO-Login weitergeleitet
+      4. Geben Sie Ihre DAS ID und Ihr Passwort ein
+      5. Nach erfolgreicher Authentifizierung werden Sie zur Registry-Oberfläche weitergeleitet
+
+      3.2.2 CLI Login
+      Um sich über die Kommandozeile anzumelden, verwenden Sie folgenden Befehl:
+
+      docker login <cpk.quay.asg.net> -u <DAS-ID>
+      Oder mit Podman:
+
+      podman login <cpk.quay.asg.net> -u <DAS-ID>
+      Sie werden nach Ihrem Passwort gefragt. Geben Sie dieses ein, um sich anzumelden.
+
+      3.3 Images verwalten
+      3.3.1 Image hochladen (Push)
+      1. Taggen Sie Ihr lokales Image entsprechend der Registry-Namenskonvention:
+
+      docker tag mein-lokales-image:latest <REGISTRY-URL>/<app-team-name>-<umgebung>/<repo>:<tag>
+      2. Laden Sie das Image hoch:
+
+      docker push <REGISTRY-URL>/<app-team-name>-<umgebung>/<repo>:<tag>
+      
+    questions_and_answers:
+      - question: |
+          Wie kann ich auf die Cluster Interne RedHat Quay Instanz über das Web-Interface zugreifen?
+        answer: |
+          Um auf die Cluster Interne RedHat Quay Instanz zuzugreifen, folgen sie den folgenden Schritten.
+          1. Navigieren Sie zur Registry-URL `cpk.quay.asg.net`
+          2. Klicken Sie auf den "Log in"-Button
+          3. Sie werden zum SSO-Login weitergeleitet
+          4. Geben Sie Ihre DAS ID und Ihr Passwort ein
+          5. Nach erfolgreicher Authentifizierung werden Sie zur Registry-Oberfläche weitergeleitet
+      - question: |
+          Wie kann ich auf ein Image meines Applikationsteams zugreifen?
+        answer: |
+          Um auf ein Image ihres Applikationsteams zuzugreifen müssen sie dem folgenden Schema folgen.
+          `cpk.quay.asg.net/<app-team-name>-<umgebung>/<repo>:<tag>`
+      - question: |
+          Wie kann ich ein Image für die Produktionsumgebung bereitstellen?
+        answer: |
+          Beim bereitstellen eines Images kann dem normalen Image Build Prozess gefolgt werden.
+          Es ist nur wichtig, dass das Image in der korrekten Organisation innerhalb der Quay Instanz abgelegt wird.
+          Dabei muss darauf geachtet werden, dass der korrekte Suffix bei der Organisation `-prod` gesetzt wird.
+          Daraus ergibt sich ergibt sich folgender Organisationsname: `<Applikationsteam-ID>-prod`
+  # ######### #
+  # Context 7 #
+  # ######### #
+  - context: |
+      ## 4. 1 . 2   Erstellen   e i ner   Image-Annahme-Anfrage
+
+      1. Erstellen Sie eine YAML-Datei `image-request.yaml` mit folgendem Inhalt:
+      ```yaml
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ImageImportRequest
+      metadata:
+      name: nginx-import
+      namespace: &lt;team-namespace&gt;
+      spec:
+      source:
+      registry: docker.io
+      repository: nginx
+      tag: 1.21.0
+      destination:
+      registry: registry.internal.example.com
+      repository: &lt;team-namespace&gt;/nginx
+      ```
+      Images sind Applikationsteam-spezifisch. Jedes Team erhält nur Zugriff auf die eigenen Images.
+
+      2. Reichen Sie die Anfrage ein:
+      ```bash
+      oc apply -f image-request.yaml
+      ```
+
+      3. Überprüfen Sie den Status der Anfrage:
+      ```bash
+      oc get imagerequest nginx-import -n &lt;team-namespace&gt; -o yaml
+      ```
+
+      ## 4. 1 . 3   Verwendung   des  i mport i erten   Images
+
+      Nach erfolgreicher Annahme können Sie das Image in Ihren Deployments verwenden:
+
+      ```yaml
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+      name: nginx-deployment
+      namespace: &lt;team-namespace&gt;
+      spec:
+      replicas: 1
+      selector:
+      matchLabels:
+      app: nginx
+      template:
+      metadata:
+      labels:
+      app: nginx
+      spec:
+      containers:
+      name: nginx
+      i mage: registry.internal.example.com/&lt;team-namespace&gt;/nginx:1.21.0
+      ports:
+      containerPort: 80
+      ```
+
+     
+    questions_and_answers:
+
+      - question: |
+          Wer hat alles Zugriff auf Images für die ich den Annahme-Prozess angestoßen habe?
+        answer: |
+          Vom Cluster angenommene Images sind Applikationsteam-spezifisch. Deswegen erhalten nur Mitglieder deines Applikationsteams
+          auch Zugriff auf diese Images.
+      - question: |
+          Wie kann ich den Image-Annahme-Prozess starten?
+        answer: |
+          Um den Image-Annahme-Prozess zu starten musst du eine ImageImportRequest Ressource erstellen.
+          Dieser Request kann wie folgt aussehen.
+          ```yaml
+          apiVersion: operator.openshift.io/v1alpha1
+          kind: ImageImportRequest
+          metadata:
+            name: image-import
+            namespace: <team-namespace>
+          spec:
+            source:
+              registry: <container-registry-url>
+              repository: <container-repo>
+              tag: <container-tag>
+            destination:
+              registry: registry.internal.example.com
+              repository: <team-namespace>/<container-repo>
+              tag: 1.21.0
+          ```
+          Danach muss die Anfrage erstellt werden
+          ```bash
+          oc apply -f image-request.yaml
+          ```
+          Überprüfen Sie den Status der Anfrage:
+          ```bash
+          oc get imagerequest image-import -n <team-namespace> -o yaml
+          ```
+          Nach erfolgreicher Annahme kann das Image einfach in Deployments verwendet werden.
+      - question: |
+          Wie kann ich ein erfolgreich importiertes Image für das deployen einer Applikation verwenden?
+        answer: |
+          Erfolgreich importierte Images sind ab dem Import im Cluster verfügbar. Das heißt, dass 
+          sie wie gewohnt in Deployments referenziert werden können.
+          In der deployment YAML Datei kann unter dem Pfad spec.containers.image das genaue Image spezifiziert werden.
+document:
+  repo: 'https://github.com/jmo2k02/rhoai_sc_q2_taxonomy.git'
+  commit: xx
+  patterns:
+    - 'taxonomy\knowledge\container_management\confluence_page_How to - Image Annahme und HELM Chart Annahme-with-image-refs.md'
+    - 'taxonomy\knowledge\container_management\confluence_page_How to - Registry (Quay)-with-image-refs.md'
+    - 'taxonomy\knowledge\container_management\confluence_page_How to - Vorgabe zum Erstellen von Container-Images-with-image-refs.md'
+    - 'taxonomy\knowledge\container_management\confluence_page_How to - Zugriff auf Basis Images-with-image-refs.md'
