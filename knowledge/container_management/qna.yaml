@@ -1,10 +1,3 @@
-# 1. context: How to - Image Annahme und HELM Chart Annahme
-# # Fokus auf Vertrauenswürdige Quellen für Container Images
-# 2. context: How to - Image Annahme und HELM Chart Annahme
-# # Fokus auf Vertrauenswürdige Quellen für Helm Charts
-# 2. context: How to - Zugriff auf Basis Images
-# 3. context: How to - Vorgabe zum Erstellen von Container Images
-# 4. context: How to - Registry (Quay)
 version: 1
 domain: Container Management
 created_by: jm02k02
