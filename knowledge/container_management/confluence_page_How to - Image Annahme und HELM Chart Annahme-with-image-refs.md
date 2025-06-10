@@ -1,10 +1,10 @@
 ## How to - Image Annahme und HELM Chart Annahme
 
-## 1 .  Z i el
+## 1. Ziel
 
 Dieses How-To beschreibt den Prozess, wie externe Container Images und Helm Charts in die RedHat OpenShift Container Platform importiert werden können. Da der Cluster keinen direkten Zugang zum Internet hat, müssen diese Ressourcen über einen definierten Annahmeprozess in die Plattform überführt werden. Nach Abschluss des Prozesses stehen die Images und Helm Charts für die Nutzung innerhalb der Plattform zur Verfügung.
 
-## 2.  Voraussetzungen
+## 2. Voraussetzungen
 
 - Gültiges Benutzerkonto für die OpenShift Container Platform
 - Zugehörigkeit zu einem Applikationsteam mit entsprechenden Berechtigungen
@@ -13,20 +13,20 @@ Dieses How-To beschreibt den Prozess, wie externe Container Images und Helm Char
 - Installierte OpenShift CLI (`oc`)
 - Optional: Installierte Helm CLI für lokale Tests
 
-## 3.  Pr ü fung   auf   vertrauensw ü rd i ge   Quellen
+## 3. Prüfung auf vertrauenswürdige Quellen
 
 Vor dem Import von Container Images und Helm Charts ist eine sorgfältige Prüfung der Quellen erforderlich, um die Sicherheit und Compliance der Plattform zu gewährleisten.
 
-## 3 . 1 Bewertung   von   Conta i ner   Image   Quellen
+## 3.1 Bewertung von Container Image Quellen
 
-## Vertrauensw ü rd i ge   Reg i str i es :
+## Vertrauenswürdige Registries:
 
-- Docker Hub ( Docker: Accelerated Container Application Development  ) - nur für offizielle Images und verifizierte Publisher
-- Red Hat Container Catalog ( Home - Red Hat Ecosystem Catalog  )
-- Quay   ( Quay  ) - bevorzugt für Red Hat und Community Images
+- Docker Hub (Docker: Accelerated Container Application Development) - nur für offizielle Images und verifizierte Publisher
+- Red Hat Container Catalog (Home - Red Hat Ecosystem Catalog)
+- Quay (Quay) - bevorzugt für Red Hat und Community Images
 - Bitnami Registry für etablierte Anwendungsstacks
 
-## Si cherhe i tskr i ter i en   f ü r   Images :
+## Sicherheitskriterien für Images:
 
 - Verwendung von offiziellen Base Images (alpine, ubuntu, centos-stream, ubi)
 - Aktuelle Sicherheitsupdates und Patch-Level
@@ -34,17 +34,17 @@ Vor dem Import von Container Images und Helm Charts ist eine sorgfältige Prüfu
 - Dokumentierte Dockerfile und Transparenz der Build-Prozesse
 - Regelmäßige Updates durch den Maintainer
 
-## 3 . 2 Bewertung   von   Helm   Chart   Quellen
+## 3.2 Bewertung von Helm Chart Quellen
 
-## Vertrauensw ü rd i ge   Helm   Repos i tor i es :
+## Vertrauenswürdige Helm Repositories:
 
-- Artifact Hub ( Artifact Hub  ) - zentraler Hub für Helm Charts
+- Artifact Hub (Artifact Hub) - zentraler Hub für Helm Charts
 - Bitnami Charts (charts.bitnami.com/bitnami)
 - Elastic Charts (helm.elastic.co)
-- Prometheus Community ( Prometheus Community Kubernetes Helm Charts  )
-- Ingress NGINX ( Welcome - Ingress-Nginx Controller  )
+- Prometheus Community (Prometheus Community Kubernetes Helm Charts)
+- Ingress NGINX (Welcome - Ingress-Nginx Controller)
 
-## Qual i t ä tskr i ter i en   f ü r   Helm   Charts :
+## Qualitätskriterien für Helm Charts:
 
 - Wartung durch etablierte Organisationen oder Communities
 - Regelmäßige Updates und Versionszyklen
@@ -52,13 +52,13 @@ Vor dem Import von Container Images und Helm Charts ist eine sorgfältige Prüfu
 - Verwendung von bewährten Kubernetes-Praktiken
 - Aktive Community und Support
 
-## 4.  Schr i tt-f ü r-Schr i tt   Anle i tung
+## 4. Schritt-für-Schritt Anleitung
 
-## 4 . 1 Image Annahme
+## 4.1 Image Annahme
 
 Das Bild zeigt ein orangefarbenes Warnsymbol in Form eines Dreiecks, das mit einem weißen Ausrufezeichen in der Mitte versehen ist. Der Hintergrund des Symbols ist hellgelb, wodurch das Dreieck und das Ausrufezeichen deutlich hervorgehoben werden. Dieses Symbol wird häufig verwendet, um auf eine Warnung oder eine potenzielle Gefahr hinzuweisen.
 
-## 4. 1 . 1   Ident i f i z i erung   des   ben ö t i gten   Images
+## 4.1.1 Identifizierung des benötigten Images
 
 1. Ermitteln Sie die genaue Image-Referenz (Repository und Tag), die Sie importieren möchten.
 
@@ -72,7 +72,7 @@ oc get is -n &lt;namespace&gt;
 
 ```
 
-## 4. 1 . 2   Erstellen   e i ner   Image-Annahme-Anfrage
+## 4.1.2 Erstellen einer Image-Annahme-Anfrage
 
 1. Erstellen Sie eine YAML-Datei `image-request.yaml` mit folgendem Inhalt:
 
@@ -124,7 +124,7 @@ oc get imagerequest nginx-import -n &lt;team-namespace&gt; -o yaml
 
 ```
 
-## 4. 1 . 3   Verwendung   des  i mport i erten   Images
+## 4.1.3 Verwendung des importierten Images
 
 Nach erfolgreicher Annahme können Sie das Image in Ihren Deployments verwenden:
 
@@ -172,9 +172,9 @@ containerPort: 80
 
 ```
 
-## 4 . 2 Helm   Chart   Annahme
+## 4.2 Helm Chart Annahme
 
-## 4. 2 . 1   Ident i f i z i erung   des   ben ö t i gten   Helm   Charts
+## 4.2.1 Identifizierung des benötigten Helm Charts
 
 1. Ermitteln Sie die genaue Chart-Referenz und Version, die Sie importieren möchten.
 
@@ -188,7 +188,7 @@ helm search repo internal-helm-repo
 
 ```
 
-## 4. 2 . 2   Erstellen   e i ner   Helm   Chart-Annahme-Anfrage
+## 4.2.2 Erstellen einer Helm Chart-Annahme-Anfrage
 
 1. Erstellen Sie eine YAML-Datei `helmchart-request.yaml` mit folgendem Inhalt:
 
@@ -222,82 +222,83 @@ version: 12.1.3
 
 ```
 
-- 2. Reichen Sie die Anfrage ein:
-- ```bash
+2. Reichen Sie die Anfrage ein:
+```bash
 
 oc apply -f helmchart-request.yaml
 
 ```
 
-- 3. Überprüfen Sie den Status der Anfrage:
+3. Überprüfen Sie den Status der Anfrage:
 
-```bash oc get helmchartrequest wordpress-import -n &lt;team-namespace&gt; -o yaml
+```bash
+oc get helmchartrequest wordpress-import -n &lt;team-namespace&gt; -o yaml
 
 ```
 
-## 4. 2 . 3   Verwendung   des  i mport i erten   Helm   Charts
+## 4.2.3 Verwendung des importierten Helm Charts
 
 Nach erfolgreicher Annahme können Sie das Helm Chart installieren:
 
-- 1. Aktualisieren Sie Ihre Helm Repositories:
-- ```bash
+1. Aktualisieren Sie Ihre Helm Repositories:
+```bash
 
 helm repo update
 
 ```
 
-- 2. Installieren Sie das Chart:
-- ```bash
+2. Installieren Sie das Chart:
+```bash
 
 helm install my-wordpress internal-helm-repo/&lt;team-namespace&gt;-wordpress --version 12.1.3 -n &lt;team-namespace&gt;
 
 ```
 
-## 5.  H ä uf i ge   Fehler   und   L ö sungen
+## 5. Häufige Fehler und Lösungen
 
-## 5 . 1 Image   kann   n i cht   gefunden   werden
+## 5.1 Image kann nicht gefunden werden
 
-* Problem : * Die Image-Annahme schlägt fehl mit "Image not found".
+*Problem:* Die Image-Annahme schlägt fehl mit "Image not found".
 
-## * L ö sung : *
+*Lösung:*
 
 - Überprüfen Sie die genaue Schreibweise des Image-Namens und Tags
 - Stellen Sie sicher, dass das Image im Quell-Repository öffentlich verfügbar ist
 - Bei privaten Repositories: Stellen Sie sicher, dass die entsprechenden Zugangsdaten konfiguriert sind
 
-## 5 . 2 Berecht i gungsprobleme
+## 5.2 Berechtigungsprobleme
 
 Das Bild zeigt ein Symbol, das eine stilisierte Darstellung einer Kette oder eines Links darstellt. Es besteht aus zwei rechteckigen, leicht abgerundeten Formen, die durch eine diagonale Verbindung miteinander verbunden sind. Die Farbe des Symbols ist grau, und es wirkt minimalistisch. Dieses Symbol wird oft verwendet, um auf Hyperlinks oder Verknüpfungen hinzudeuten.
 
-* Problem : * "Permission denied" beim Zugriff auf Images oder Helm Charts.
+*Problem:* "Permission denied" beim Zugriff auf Images oder Helm Charts.
 
-## * L ö sung : *
+*Lösung:*
 
 - Überprüfen Sie Ihre Teamzugehörigkeit und Berechtigungen
 - Stellen Sie sicher, dass Sie im richtigen Namespace arbeiten
 - Wenden Sie sich an den Plattform-Administrator, falls die Berechtigungen angepasst werden müssen
 
-## 5 . 3 Helm   Chart   Vers i onskonfl i kte
+## 5.3 Helm Chart Versionskonflikte
 
-* Problem : * Konflikte bei der Installation aufgrund von Abhängigkeiten.
+*Problem:* Konflikte bei der Installation aufgrund von Abhängigkeiten.
 
-## * L ö sung : *
+*Lösung:*
 
 - Überprüfen Sie die Abhängigkeiten des Charts mit `helm dependency list`
 - Importieren Sie fehlende abhängige Charts ebenfalls
 - Verwenden Sie kompatible Versionen aller Komponenten
 
-## 5 . 4 Image   Pull   Fehler  i m   Deployment
+## 5.4 Image Pull Fehler im Deployment
 
-* Problem : * Pods können nicht gestartet werden mit "ImagePullBackOff".
+*Problem:* Pods können nicht gestartet werden mit "ImagePullBackOff".
 
-## * L ö sung : *
+*Lösung:*
 
 - Überprüfen Sie, ob das Image erfolgreich importiert wurde
 - Stellen Sie sicher, dass der Image-Pfad in der Deployment-Konfiguration korrekt ist
 - Prüfen Sie die Image Pull Secrets, falls erforderlich
 
-## 6.  We i terf ü hrende   L i nks
+## 6. Weiterführende Links
 
 - OpenShift Container Platform Dokumentation(https://docs.openshift.com/)
 - Helm Dokumentation(https://helm.sh/docs/)
