@@ -143,7 +143,8 @@ spec:
   workspaces:
   - name: shared-workspace
     persistentVolumeClaim:
-      claimName: meine-pipeline-pvc EOF
+      claimName: meine-pipeline-pvc
+EOF
 ```
 
 ## 4. Häufige Fehler und Lösungen
