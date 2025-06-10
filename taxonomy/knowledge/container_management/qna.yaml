@@ -539,7 +539,7 @@ document:
   repo: 'https://github.com/jmo2k02/rhoai_sc_q2_taxonomy.git'
   commit: 40e9e124433769d76b5bc6e1446733bf1b3f5ed6
   patterns:
-    - 'taxonomy\knowledge\container_management\confluence_page_How to - Image Annahme und HELM Chart Annahme-with-image-refs.md'
-    - 'taxonomy\knowledge\container_management\confluence_page_How to - Registry (Quay)-with-image-refs.md'
-    - 'taxonomy\knowledge\container_management\confluence_page_How to - Vorgabe zum Erstellen von Container-Images-with-image-refs.md'
-    - 'taxonomy\knowledge\container_management\confluence_page_How to - Zugriff auf Basis Images-with-image-refs.md'
+    - 'documents\confluence_page_How to - Image Annahme und HELM Chart Annahme-with-image-refs.md'
+    - 'documents\confluence_page_How to - Registry (Quay)-with-image-refs.md'
+    - 'documents\confluence_page_How to - Vorgabe zum Erstellen von Container-Images-with-image-refs.md'
+    - 'documents\confluence_page_How to - Zugriff auf Basis Images-with-image-refs.md'
