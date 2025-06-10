@@ -1,4 +1,4 @@
-version: 1
+version: 3
 domain: Container Management
 created_by: jm02k02
 document_outline: |
@@ -125,7 +125,7 @@ seed_examples:
           Was muss ich genau angeben um ein Image zu importieren?
         answer: |
           Um ein Image zu importieren muss die genaue Image Referenz angegeben werden.
-          Dafür müssen das Repository und der Tag angegeben werden. 
+          Dafür müssen das Repository und der Tag angegeben werden.
           Beispiel: `docker.io/nginx:1.21.0`
   # ######### #
   # Context 3 #
@@ -133,12 +133,12 @@ seed_examples:
   - context: |
       3. Verfügbare Basis-Images
 
-      Alle folgenden Images sind im Cluster frei und ohne Einschränkungen verfügbar. 
-      Sie können für das Erstellen von Containern genutzt werden. 
+      Alle folgenden Images sind im Cluster frei und ohne Einschränkungen verfügbar.
+      Sie können für das Erstellen von Containern genutzt werden.
 
-      Viele der offiziellen und subskriptionsfreien RedHat Universal Build Images (UBI) sind auf der Plattform verfügbar. 
+      Viele der offiziellen und subskriptionsfreien RedHat Universal Build Images (UBI) sind auf der Plattform verfügbar.
       Diese Images sind in der Quay-Organisation `plattform-base-images` unter folgender URL erhältlich:
-      
+
       `cpk.quay.asg.net/plattform-base-images/<repo>`
 
       OpenJDK Runtime Images
@@ -382,7 +382,7 @@ seed_examples:
 
       3.2 Anmeldung an der Registry
       3.2.1 Web-Interface Login
-      1. Navigieren Sie zur Registry-URL: 
+      1. Navigieren Sie zur Registry-URL:
 
       cpk.quay.asg.net
       2. Klicken Sie auf den "Log in"-Button
@@ -407,7 +407,7 @@ seed_examples:
       2. Laden Sie das Image hoch:
 
       docker push <REGISTRY-URL>/<app-team-name>-<umgebung>/<repo>:<tag>
-      
+
     questions_and_answers:
       - question: |
           Wie kann ich auf die Cluster Interne RedHat Quay Instanz über das Web-Interface zugreifen?
@@ -491,7 +491,7 @@ seed_examples:
       containerPort: 80
       ```
 
-     
+
     questions_and_answers:
 
       - question: |
@@ -532,7 +532,7 @@ seed_examples:
       - question: |
           Wie kann ich ein erfolgreich importiertes Image für das deployen einer Applikation verwenden?
         answer: |
-          Erfolgreich importierte Images sind ab dem Import im Cluster verfügbar. Das heißt, dass 
+          Erfolgreich importierte Images sind ab dem Import im Cluster verfügbar. Das heißt, dass
           sie wie gewohnt in Deployments referenziert werden können.
           In der deployment YAML Datei kann unter dem Pfad spec.containers.image das genaue Image spezifiziert werden.
 document:
