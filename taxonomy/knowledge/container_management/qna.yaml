@@ -830,4 +830,4 @@ document:
   repo: 'https://github.com/mamurak/rhoai_sc_q2_taxonomy.git'
   commit: de470252e56b5d593d9e5efde6a71977b09546f4
   patterns:
-    - 'documents\*.md'
+    - 'documents/*.md'
