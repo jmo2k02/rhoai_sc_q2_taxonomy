@@ -2,16 +2,12 @@
 
 Die Vorgaben erfolgen hierbei durch das Plattformteam, während die Applikationsteams diese befolgen bzw. innerhalb ihrer Container (Images) einhalten.
 
-## Externe Version
-
-Dieses Dokument basiert auf einem internen Dokument und enthält bewusste Weglassungen von Informationen, welche zum rein internen Gebrauch bestimmt sind. Insbesondere sind Anforderungskriterien entfallen die ausschließlich interne Relevanz haben.
-
 ## Hinweise zu Begriffen:
 
-- · MAGIC steht für Moderne agile Container-Plattform und ist die Plattform im RZF, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt MAGIC auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen.
+- · MAGIC steht für Moderne agile Container-Plattform und ist die interne ContainerPlattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt MAGIC auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen.
 - · MAGIC-Team ist das Plattform-Team, welches das Produkt MAGIC verantwortet.
 - · ISV (Independent Software Vendor) ist ein externer Lieferant für container-basierte Applikationen, die auf MAGIC betrieben werden
-- · Applikations-Teams sind interne Teams im RZF bzw. im KONSENS-Verbund, die containerbasierte Applikationen auf MAGIC u.a. betreiben. Betrieb bedeutet hier, dass diese Teams das Deployment der Applikation auf MAGIC und damit auch die notwendigen HELM-Charts oder vergleichbar verantworten.
+- · Applikations-Teams sind interne Teams, die containerbasierte Applikationen auf MAGIC u.a. betreiben. Betrieb bedeutet hier, dass diese Teams das Deployment der Applikation auf MAGIC und damit auch die notwendigen HELM-Charts oder vergleichbar verantworten.
 
 ## Verwendung der Modalverben Muss und Soll
 
@@ -41,7 +37,7 @@ April 2021 / Aktualisiert Dezember 2023
 
 ## Allgemeine Richtlinie
 
-MAGIC unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Bitte kontaktieren Sie den MAGIC Produktverantwortlichen (Product Owner - PO) für weitergehende Informationen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern. Diese Vorgaben entsprechen den Anforderungen der TZAK25 (Micro Service &amp; Container) und berücksichtigt die Sicherheitsanforderungen (Richtlinie r502 bzw. BSI Bausteine SYS.1.6 und APP.4.4).
+MAGIC unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Bitte kontaktieren Sie den MAGIC Produktverantwortlichen (Product Owner - PO) für weitergehende Informationen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern.
 
 ## Sektion A: Technische Anforderungen und Empfehlungen
 
