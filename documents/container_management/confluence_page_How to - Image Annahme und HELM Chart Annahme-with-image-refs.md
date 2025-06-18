@@ -305,7 +305,7 @@ Das Bild zeigt ein Symbol, das eine stilisierte Darstellung einer Kette oder ein
 - Interne Plattform-Dokumentation(https://confluence.internal.example.com/container-platform/)
 - OpenShift Image Streams Konzepte(https://docs.openshift.com/container-platform/4.10/openshift\_images/image-streamsmanage.html)
 - Best Practices für Container Images(https://docs.openshift.com/container-platform/4.10/openshift\_images/createi mages.html)
-- Bei weiteren Fragen oder Problemen wenden Sie sich bitte an das Plattform-Team über den Support-Kanal oder per E-Mail an platform-support@example.com.
+- Bei weiteren Fragen oder Problemen wenden Sie sich bitte an das Plattform-Team über den Support-Kanal oder per E-Mail an platform-support@icp-company.de.
 
 Das Bild zeigt ein Symbol, das aus einem blauen Kreis besteht. Im Zentrum des Kreises befindet sich ein weißes, stilisiertes "i", das für "Information" steht. Der Kreis hat eine einheitliche Färbung, und das Symbol vermittelt eine klare und minimalistische Darstellung. Es wird häufig als Hinweis auf verfügbare Informationen oder als Icon für Hilfs- und Informationsoptionen in digitalen Anwendungen verwendet. Der Hintergrund ist hell und neutral, wodurch das Symbol hervorgehoben wird.
 

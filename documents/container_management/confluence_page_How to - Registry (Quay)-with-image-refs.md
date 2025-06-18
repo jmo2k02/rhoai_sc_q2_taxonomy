@@ -27,7 +27,6 @@ Die Registry ist unter folgender URL erreichbar:
 
 Die URL eines Applikationsteam-Images folgt diesem Schema: 
 ```
-cpk.quay.asg.net
 cpk.quay.asg.net/<app-team-name>-<umgebung>/<repo>:<tag>
 ```
 

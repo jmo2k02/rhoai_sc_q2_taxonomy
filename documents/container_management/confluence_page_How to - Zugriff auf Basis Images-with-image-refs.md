@@ -140,7 +140,7 @@ Verwenden Sie immer vollständige Versionsnummern
 
 Wenn Sie ein Basis-Image benötigen, das nicht verfügbar ist:
 
-1. Senden Sie eine E-Mail an plattform@team.de
+1. Senden Sie eine E-Mail an plattform-support@icp-company.de
 2. Geben Sie an, welches Image Sie benötigen und wofür
 3. Das Plattformteam wird ihre Anfrage bearbeiten und dann das gewünschte Image bereitstellen
 
@@ -183,6 +183,6 @@ Das Bild zeigt ein Symbol in Form eines blauen Kreises, in dessen Mitte sich ein
 
 ## Hinweis
 
-Bei weiteren Fragen oder Problemen wenden Sie sich bitte an das Plattformteam unter plattform@team.de.
+Bei weiteren Fragen oder Problemen wenden Sie sich bitte an das Plattformteam unter plattform-support@icp-company.de.
 
 Automatisch generiert mit LangChain und OpenAI GPT-4

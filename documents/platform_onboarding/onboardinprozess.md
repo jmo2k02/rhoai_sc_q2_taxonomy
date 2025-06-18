@@ -73,6 +73,6 @@ Bei Problemen oder Verzögerungen erfolgt die Eskalation über:
 
 ## Kontakt und Support
 
-- **Plattform-Team**: openshift-platform@company.com
-- **Projekt-Koordination**: container-onboarding@company.com
-- **24/7 Support**: it-operations@company.com
+- **Plattform-Team**: plattform-support@icp-company.de
+- **Projekt-Koordination**: plattform-onboarding@icp-company.de
+- **24/7 Support**: plattform-support@icp-company.de

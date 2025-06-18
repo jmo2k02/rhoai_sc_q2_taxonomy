@@ -344,7 +344,7 @@ seed_examples:
 
       Wenn Sie ein Basis-Image benötigen, das nicht verfügbar ist:
 
-      1. Senden Sie eine E-Mail an plattform@team.de
+      1. Senden Sie eine E-Mail an plattform-support@icp-company.de
       2. Geben Sie an, welches Image Sie benötigen und wofür
       3. Das Plattformteam wird ihre Anfrage bearbeiten und dann das gewünschte
        Image bereitstellen
@@ -363,7 +363,7 @@ seed_examples:
         answer: |
           Um ein im Cluster nicht vorhandenes Basis Image zu beantragen, folge
            bitte diesen 3 Schritten.
-          1. Senden Sie eine E-Mail an plattform@team.de
+          1. Senden Sie eine E-Mail an plattform-support@icp-company.de
           2. Geben Sie an, welches Image Sie benötigen und wofür
           3. Das Plattformteam wird das gewünschte Image bereitstellen
       - question: |
