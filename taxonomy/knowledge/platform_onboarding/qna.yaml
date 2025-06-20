@@ -4,7 +4,7 @@ domain: Plattform Onboarding
 created_by: jm02k02
 document_outline: |
   Akzeptanzkriterien und technische Anforderungen für Workloads auf der 
-  Internen Container-Plattform (ICP) basierend auf Red Hat OpenShift.
+  Internen Container-Plattform (ICP)
 seed_examples:
   # ######### #
   # Context 1 #
@@ -14,11 +14,7 @@ seed_examples:
 
       Die Vorgaben erfolgen hierbei durch das Plattformteam, während die Applikationsteams diese befolgen bzw. innerhalb ihrer Container (Images) einhalten.
 
-      ## Allgemeine Richtlinie
-
-      ICP unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Bitte kontaktieren Sie den ICP Produktverantwortlichen (Product Owner - PO) für weitergehende Informationen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern.
-
-      ## Hinweise zu Begriffen
+      ## Hinweise zu Begriffen:
 
       - ICP steht für Interne Container-Plattform und ist die interne ContainerPlattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt ICP auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen.
       - ICP-Team ist das Plattform-Team, welches das Produkt ICP verantwortet.
@@ -27,22 +23,22 @@ seed_examples:
 
       ## Verwendung der Modalverben Muss und Soll
 
-      | Ausdruck | Bedeutung |
-      |----------|-----------|
-      | MUSS | So gekennzeichnete Anforderungen müssen unbedingt erfüllt werden. |
-      | SOLL | Dieser Ausdruck bedeutet, dass eine Anforderung zwar normalerweise erfüllt werden muss, bei stichhaltigen Gründen aber auch davon abgesehen werden kann und dies ggf. auch Genehmigungspflichtig ist (wird bei Kriterium vermerkt). Wenn von diesem Kriterium abgewichen werden kann, bedeutet dass, das ICP-Team beim Betrieb der Plattform davon ausgeht, dass dieses Kriterium erfüllt wird und Einschränkungen die aus Nichterfüllung resultieren vom Applikations-Team akzeptiert werden. |
+      Dieses Dokument verwendet an dieser Stelle folgende Begriffsdefinitionen:
+
+      MUSS: So gekennzeichnete Anforderungen müssen unbedingt erfüllt werden.
+      SOLL: Dieser Ausdruck bedeutet, dass eine Anforderung zwar normalerweise erfüllt werden muss, bei stichhaltigen Gründen aber auch davon abgesehen werden kann und dies ggf. auch Genehmigungspflichtig ist (wird bei Kriterium vermerkt). Wenn von diesem Kriterium abgewichen werden kann, bedeutet dass, das ICP-Team beim Betrieb der Plattform davon ausgeht, dass dieses Kriterium erfüllt wird und Einschränkungen die aus Nichterfüllung resultieren vom Applikations-Team akzeptiert werden.
 
     questions_and_answers:
       - question: |
-          Was ist die ICP und welche Architekturstandards werden unterstützt?
+          Was ist ICP und welche Version wird verwendet?
         answer: |
-          ICP steht für Interne Container-Plattform und ist die interne ContainerPlattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt ICP auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen. ICP unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen.
+          ICP steht für Interne Container-Plattform und ist die interne ContainerPlattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt ICP auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen.
       - question: |
-          Was bedeuten die Modalverben MUSS und SOLL in den Akzeptanzkriterien?
+          Was bedeuten die Modalverben MUSS und SOLL?
         answer: |
-          MUSS: So gekennzeichnete Anforderungen müssen unbedingt erfüllt werden. SOLL: Dieser Ausdruck bedeutet, dass eine Anforderung zwar normalerweise erfüllt werden muss, bei stichhaltigen Gründen aber auch davon abgesehen werden kann und dies ggf. auch Genehmigungspflichtig ist. Wenn von diesem Kriterium abgewichen werden kann, bedeutet dass, das ICP-Team beim Betrieb der Plattform davon ausgeht, dass dieses Kriterium erfüllt wird und Einschränkungen die aus Nichterfüllung resultieren vom Applikations-Team akzeptiert werden.
+          MUSS: So gekennzeichnete Anforderungen müssen unbedingt erfüllt werden. SOLL: Dieser Ausdruck bedeutet, dass eine Anforderung zwar normalerweise erfüllt werden muss, bei stichhaltigen Gründen aber auch davon abgesehen werden kann und dies ggf. auch Genehmigungspflichtig ist (wird bei Kriterium vermerkt). Wenn von diesem Kriterium abgewichen werden kann, bedeutet dass, das ICP-Team beim Betrieb der Plattform davon ausgeht, dass dieses Kriterium erfüllt wird und Einschränkungen die aus Nichterfüllung resultieren vom Applikations-Team akzeptiert werden.
       - question: |
-          Welche Verantwortung haben Applikations-Teams bei ICP?
+          Welche Rolle haben Applikations-Teams?
         answer: |
           Applikations-Teams sind interne Teams, die containerbasierte Applikationen auf ICP u.a. betreiben. Betrieb bedeutet hier, dass diese Teams das Deployment der Applikation auf ICP und damit auch die notwendigen HELM-Charts oder vergleichbar verantworten.
 
@@ -50,267 +46,500 @@ seed_examples:
   # Context 2 #
   # ######### #
   - context: |
-      ## Image-Spezifikationen - Technische Anforderungen
+      ## Allgemeine Richtlinie
 
-      ### OCI Kompatibilität (MUSS)
-      Wenn alle Komponenten der containerisierten Applikation vom Applikationsteam oder einem externen Softwareanbieter (ISV) als Container-Images zur Verfügung gestellt werden, ist die Kompatibilität zu den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) sicherzustellen. Ein Image-Manifest (Dockerfile) muss für jedes Container Image mitgeliefert werden. Siehe hierzu auch: https://github.com/opencontainers/
+      ICP unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Bitte kontaktieren Sie den ICP Produktverantwortlichen (Product Owner - PO) für weitergehende Informationen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern.
 
-      ### Image Unterstützung (MUSS)
-      Alle Images, die von Applikationsteams oder externen ISV erstellt bzw. bereitgestellt werden, müssen auf zertifizierten, sicheren und validierten Basis-Images basieren.
+      ## Hinweis für eine Nutzung als Leistungsverzeichnis (LV):
 
-      ### Minimale Images (MUSS)
-      Container sind lediglich mit der Software ausgestattet, die benötigt wird, um den zugrunde liegenden Microservice zu betreiben. Sämtliche darüber hinaus nicht benötigte Softwarepakete oder Bibliotheken sind im Image Erstellungsprozess entfernt worden, sodass daraus abgebildete Container als gehärtet betrachtet werden können. Standardbenutzer der verwendeten Software in Containern sind entfernt oder deaktiviert.
+      - Die Kriterien sind in der Formulierung nicht konsistent geeignet, um diese als Ausschlusskriterium im Sinne einer geschlossenen Frage als JA/NEIN zu beantworten. Eine weitere Schärfung für ein LV In der Formulierung ist erforderlich.
 
-      ### Keine Root-Berechtigungen (MUSS)
-      Kein Prozess innerhalb des Containers braucht Root-Berechtigungen. Container mit privilegierten Rechten sind nicht erlaubt. Applikationen sollten in Verzeichnissen mit ausreichenden Rechten gespeichert (z.B. "/apps") werden. Ports unterhalb von 1024 dürfen nicht genutzt werden.
+      Info bei Update der Akzeptanzkriterien
+
+      Beim Update der Akzeptanzkriterien ist auch ein neues Word für die Externe Version zu erstellen.
 
     questions_and_answers:
       - question: |
-          Welche Anforderungen gelten für Container-Images bezüglich OCI-Kompatibilität?
+          Welche Architekturstandards unterstützt ICP?
         answer: |
-          Wenn alle Komponenten der containerisierten Applikation vom Applikationsteam oder einem externen Softwareanbieter (ISV) als Container-Images zur Verfügung gestellt werden, ist die Kompatibilität zu den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) sicherzustellen. Ein Image-Manifest (Dockerfile) muss für jedes Container Image mitgeliefert werden. Siehe hierzu auch: https://github.com/opencontainers/
+          ICP unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern.
       - question: |
-          Welche Anforderungen bestehen für minimale Container-Images?
+          Welche Einschränkungen gibt es bei der Verwendung als Leistungsverzeichnis?
         answer: |
-          Container sind lediglich mit der Software ausgestattet, die benötigt wird, um den zugrunde liegenden Microservice zu betreiben. Sämtliche darüber hinaus nicht benötigte Softwarepakete oder Bibliotheken sind im Image Erstellungsprozess entfernt worden, sodass daraus abgebildete Container als gehärtet betrachtet werden können. Standardbenutzer der verwendeten Software in Containern sind entfernt oder deaktiviert.
+          Die Kriterien sind in der Formulierung nicht konsistent geeignet, um diese als Ausschlusskriterium im Sinne einer geschlossenen Frage als JA/NEIN zu beantworten. Eine weitere Schärfung für ein LV In der Formulierung ist erforderlich.
       - question: |
-          Welche Sicherheitsanforderungen gelten für Container-Berechtigungen?
+          Was ist bei Updates der Akzeptanzkriterien zu beachten?
         answer: |
-          Kein Prozess innerhalb des Containers braucht Root-Berechtigungen. Container mit privilegierten Rechten sind nicht erlaubt. Applikationen sollten in Verzeichnissen mit ausreichenden Rechten gespeichert (z.B. "/apps") werden. Ports unterhalb von 1024 dürfen nicht genutzt werden.
+          Beim Update der Akzeptanzkriterien ist auch ein neues Word für die Externe Version zu erstellen.
 
   # ######### #
   # Context 3 #
   # ######### #
   - context: |
-      ## Benutzer-ID und Variablen-Management
+      ## OCI Kompatibilität (MUSS)
+      Wenn alle Komponenten der containerisierten Applikation vom Applikationsteam oder einem externen Softwareanbieter (ISV) als Container-Images zur Verfügung gestellt werden, ist die Kompatibilität zu den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) sicherzustellen. Ein Image-Manifest (Dockerfile) muss für jedes Container Image mitgeliefert werden. Siehe hierzu auch: https://github.com/opencontainers/
 
-      ### Benutzer-ID (MUSS)
-      ICP teilt automatisiert eine nicht privilegierte Benutzer-ID zu, unter der die Prozesse des Containers laufen. Der vom Applikationsteam oder externem ISV ausgelieferte Container sollte diese ID bestimmen und nutzen können - ohne eine fixe ID verwenden zu müssen.
+      ## Image Unterstützung (MUSS)
+      Alle Images, die von Applikationsteams oder externen ISV erstellt bzw. bereitgestellt werden, müssen auf zertifizierten, sicheren und validierten Basis-Images basieren.
 
-      ### Nicht-sensible Variablen (SOLL)
-      Alle nicht-sensiblen Parameter von Prozeduren oder Container-Images sollten extern spezifiziert werden und nicht im OCI Image enthalten sein, sondern beim Starten an den Container gehangen werden.
+      ## Minimale Images (MUSS)
+      Container sind lediglich mit der Software ausgestattet, die benötigt wird, um den zugrunde liegenden Microservice zu betreiben. Sämtliche darüber hinaus nicht benötigte Softwarepakete oder Bibliotheken sind im Image Erstellungsprozess entfernt worden, sodass daraus abgebildete Container als gehärtet betrachtet werden können. Standardbenutzer der verwendeten Software in Containern sind entfernt oder deaktiviert.
 
-      ### Sensible Variablen (MUSS)
-      Alle sensiblen Parameter (z.B. Private Keys oder Passwörter) der Prozedur oder Container Images müssen extern in einem "Key Management System" (siehe auch Punkt 14) spezifiziert werden. Es ist nicht erlaubt, diese im OCI Image zu speichern. Sie müssen beim Start des Containers herangezogen (z.B. Mount) werden. Technisch muss hierbei sichergestellt sein, dass selbst entwickelte oder eingekaufte Software mit Kubernetes Secrets arbeiten kann.
+      ## Keine Root-Berechtigungen (MUSS)
+      Kein Prozess innerhalb des Containers braucht Root-Berechtigungen. Container mit privilegierten Rechten sind nicht erlaubt. Applikationen sollten in Verzeichnissen mit ausreichenden Rechten gespeichert (z.B. "/apps") werden. Ports unterhalb von 1024 dürfen nicht genutzt werden.
 
     questions_and_answers:
       - question: |
-          Wie funktioniert die Benutzer-ID Zuteilung in ICP?
+          Welche OCI-Kompatibilitätsanforderungen bestehen?
         answer: |
-          ICP teilt automatisiert eine nicht privilegierte Benutzer-ID zu, unter der die Prozesse des Containers laufen. Der vom Applikationsteam oder externem ISV ausgelieferte Container sollte diese ID bestimmen und nutzen können - ohne eine fixe ID verwenden zu müssen.
+          Wenn alle Komponenten der containerisierten Applikation vom Applikationsteam oder einem externen Softwareanbieter (ISV) als Container-Images zur Verfügung gestellt werden, ist die Kompatibilität zu den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) sicherzustellen. Ein Image-Manifest (Dockerfile) muss für jedes Container Image mitgeliefert werden.
       - question: |
-          Wo sollen sensible Parameter wie Passwörter gespeichert werden?
+          Welche Anforderungen gelten für minimale Images?
         answer: |
-          Alle sensiblen Parameter (z.B. Private Keys oder Passwörter) der Prozedur oder Container Images müssen extern in einem "Key Management System" spezifiziert werden. Es ist nicht erlaubt, diese im OCI Image zu speichern. Sie müssen beim Start des Containers herangezogen (z.B. Mount) werden. Technisch muss hierbei sichergestellt sein, dass selbst entwickelte oder eingekaufte Software mit Kubernetes Secrets arbeiten kann.
+          Container sind lediglich mit der Software ausgestattet, die benötigt wird, um den zugrunde liegenden Microservice zu betreiben. Sämtliche darüber hinaus nicht benötigte Softwarepakete oder Bibliotheken sind im Image Erstellungsprozess entfernt worden, sodass daraus abgebildete Container als gehärtet betrachtet werden können. Standardbenutzer der verwendeten Software in Containern sind entfernt oder deaktiviert.
       - question: |
-          Wie sollen nicht-sensible Parameter verwaltet werden?
+          Welche Berechtigungseinschränkungen gelten für Container?
         answer: |
-          Alle nicht-sensiblen Parameter von Prozeduren oder Container-Images sollten extern spezifiziert werden und nicht im OCI Image enthalten sein, sondern beim Starten an den Container gehangen werden.
+          Kein Prozess innerhalb des Containers braucht Root-Berechtigungen. Container mit privilegierten Rechten sind nicht erlaubt. Applikationen sollten in Verzeichnissen mit ausreichenden Rechten gespeichert (z.B. "/apps") werden. Ports unterhalb von 1024 dürfen nicht genutzt werden.
 
   # ######### #
   # Context 4 #
   # ######### #
   - context: |
-      ## Kubernetes-spezifische Anforderungen
+      ## Benutzer-ID (MUSS)
+      ICP teilt automatisiert eine nicht privilegierte Benutzer-ID zu, unter der die Prozesse des Containers laufen. Der vom Applikationsteam oder externem ISV ausgelieferte Container sollte diese ID bestimmen und nutzen können - ohne eine fixe ID verwenden zu müssen.
 
-      ### K8S clusterweite Berechtigungen (MUSS)
-      Die Applikation wird auf einem oder mehreren Kubernetes Namespaces isoliert ausgebracht. Das Applikationsteam bekommt nur (Project-)Administrationsrechte für die zugeteilten Namespaces. Sie erhalten keine clusterweiten Zugänge.
+      ## Variablen (SOLL)
+      Alle nicht-sensiblen Parameter von Prozeduren oder Container-Images sollten extern spezifiziert werden und nicht im OCI Image enthalten sein, sondern beim Starten an den Container gehangen werden.
 
-      ### Kubernetes Liveness & Readiness Probe (MUSS)
-      Jedes Container-Image der Applikation stellt eine Liveness-Probe (Applikationsprozess ist verfügbar) und eine Readiness-Probe (Applikationslogik funktioniert korrekt, Komponenten sind korrekt verbunden und externe Dienste sowie Datenbanken sind verfügbar) zur Verfügung. Die Probes sind im Kubernetes-Manifest konfiguriert. Siehe auch: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-
-      ### Verfügbarkeit der Applikation (HA) (MUSS)
-      Die Applikation ist so gestaltet, dass der Ausfall oder Neustart eines Pods toleriert wird. Für eine Bereitstellung mit Hochverfügbarkeit sind mindestens zwei laufende Pods notwendig, die auf demselben Container-Image basieren. Beide Pods müssen in zwei getrennten Verfügbarkeitszonen / Rechenzentren gestartet werden (siehe Punkt 26). Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
+      ## Variablen (MUSS)
+      Alle sensiblen Parameter (z.B. Private Keys oder Passwörter) der Prozedur oder Container Images müssen extern in einem "Key Management System" (siehe auch Punkt 14) spezifiziert werden. Es ist nicht erlaubt, diese im OCI Image zu speichern. Sie müssen beim Start des Containers herangezogen (z.B. Mount) werden. Technisch muss hierbei sichergestellt sein, dass selbst entwickelte oder eingekaufte Software mit Kubernetes Secrets arbeiten kann.
 
     questions_and_answers:
       - question: |
-          Welche Berechtigungen erhalten Applikationsteams in Kubernetes?
+          Wie funktioniert die Benutzer-ID Zuteilung?
         answer: |
-          Die Applikation wird auf einem oder mehreren Kubernetes Namespaces isoliert ausgebracht. Das Applikationsteam bekommt nur (Project-)Administrationsrechte für die zugeteilten Namespaces. Sie erhalten keine clusterweiten Zugänge.
+          ICP teilt automatisiert eine nicht privilegierte Benutzer-ID zu, unter der die Prozesse des Containers laufen. Der vom Applikationsteam oder externem ISV ausgelieferte Container sollte diese ID bestimmen und nutzen können - ohne eine fixe ID verwenden zu müssen.
       - question: |
-          Welche Health Checks sind für Container-Images erforderlich?
+          Wie sollen nicht-sensible Parameter verwaltet werden?
         answer: |
-          Jedes Container-Image der Applikation stellt eine Liveness-Probe (Applikationsprozess ist verfügbar) und eine Readiness-Probe (Applikationslogik funktioniert korrekt, Komponenten sind korrekt verbunden und externe Dienste sowie Datenbanken sind verfügbar) zur Verfügung. Die Probes sind im Kubernetes-Manifest konfiguriert. Siehe auch: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+          Alle nicht-sensiblen Parameter von Prozeduren oder Container-Images sollten extern spezifiziert werden und nicht im OCI Image enthalten sein, sondern beim Starten an den Container gehangen werden.
       - question: |
-          Wie wird Hochverfügbarkeit für Applikationen sichergestellt?
+          Wie sollen sensible Parameter verwaltet werden?
         answer: |
-          Die Applikation ist so gestaltet, dass der Ausfall oder Neustart eines Pods toleriert wird. Für eine Bereitstellung mit Hochverfügbarkeit sind mindestens zwei laufende Pods notwendig, die auf demselben Container-Image basieren. Beide Pods müssen in zwei getrennten Verfügbarkeitszonen / Rechenzentren gestartet werden (siehe Punkt 26). Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
+          Alle sensiblen Parameter (z.B. Private Keys oder Passwörter) der Prozedur oder Container Images müssen extern in einem "Key Management System" (siehe auch Punkt 14) spezifiziert werden. Es ist nicht erlaubt, diese im OCI Image zu speichern. Sie müssen beim Start des Containers herangezogen (z.B. Mount) werden. Technisch muss hierbei sichergestellt sein, dass selbst entwickelte oder eingekaufte Software mit Kubernetes Secrets arbeiten kann.
 
   # ######### #
   # Context 5 #
   # ######### #
   - context: |
-      ## Persistenz und Sicherheit
+      ## K8S clusterweite Berechtigungen (MUSS)
+      Die Applikation wird auf einem oder mehreren Kubernetes Namespaces isoliert ausgebracht. Das Applikationsteam bekommt nur (Project-)Administrationsrechte für die zugeteilten Namespaces. Sie erhalten keine clusterweiten Zugänge.
 
-      ### Externe Persistenz (SOLL)
-      Daten werden, soweit notwendig, in persistenten Volumes gespeichert. Im Container sollen keine Daten gespeichert werden, da diese nach Beendigung des Containers verloren gehen. Davon ausgenommen sind temporäre Daten, deren Verlust keinen Effekt auf die Applikationsfunktionalität hat. Siehe Punkt 16 zur Ablage von Logdaten. Siehe Punkt 16 zur Ablage von Logdaten.
+      ## Kubernetes Liveness & Readiness Probe (MUSS)
+      Jedes Container-Image der Applikation stellt eine Liveness-Probe (Applikationsprozess ist verfügbar) und eine Readiness-Probe (Applikationslogik funktioniert korrekt, Komponenten sind korrekt verbunden und externe Dienste sowie Datenbanken sind verfügbar) zur Verfügung. Die Probes sind im Kubernetes-Manifest konfiguriert. Siehe auch: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 
-      ### Kommunikation (SOLL/MUSS)
-      Applikationen sind hinsichtlich ihrer Netzwerkverbindung so konfiguriert, dass sie mittels TLS ausschließlich verschlüsselt und zertifikatsbasierend miteinander kommunizieren (SOLL). Applikationen sind so konfiguriert, dass sie ausschließlich authentisiert miteinander kommunizieren (MUSS).
+      ## Verfügbarkeit der Applikation (HA) (MUSS)
+      Die Applikation ist so gestaltet, dass der Ausfall oder Neustart eines Pods toleriert wird. Für eine Bereitstellung mit Hochverfügbarkeit sind mindestens zwei laufende Pods notwendig, die auf demselben Container-Image basieren. Beide Pods müssen in zwei getrennten Verfügbarkeitszonen / Rechenzentren gestartet werden (siehe Punkt 26). Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
 
     questions_and_answers:
       - question: |
-          Wo sollen Applikationsdaten persistent gespeichert werden?
+          Welche Kubernetes-Berechtigungen erhalten Teams?
         answer: |
-          Daten werden, soweit notwendig, in persistenten Volumes gespeichert. Im Container sollen keine Daten gespeichert werden, da diese nach Beendigung des Containers verloren gehen. Davon ausgenommen sind temporäre Daten, deren Verlust keinen Effekt auf die Applikationsfunktionalität hat. Siehe Punkt 16 zur Ablage von Logdaten.
+          Die Applikation wird auf einem oder mehreren Kubernetes Namespaces isoliert ausgebracht. Das Applikationsteam bekommt nur (Project-)Administrationsrechte für die zugeteilten Namespaces. Sie erhalten keine clusterweiten Zugänge.
       - question: |
-          Welche Anforderungen gelten für die Kommunikation zwischen Applikationen?
+          Welche Health Probes sind erforderlich?
         answer: |
-          Applikationen sind hinsichtlich ihrer Netzwerkverbindung so konfiguriert, dass sie mittels TLS ausschließlich verschlüsselt und zertifikatsbasierend miteinander kommunizieren (SOLL). Applikationen sind so konfiguriert, dass sie ausschließlich authentisiert miteinander kommunizieren (MUSS).
+          Jedes Container-Image der Applikation stellt eine Liveness-Probe (Applikationsprozess ist verfügbar) und eine Readiness-Probe (Applikationslogik funktioniert korrekt, Komponenten sind korrekt verbunden und externe Dienste sowie Datenbanken sind verfügbar) zur Verfügung. Die Probes sind im Kubernetes-Manifest konfiguriert.
+      - question: |
+          Wie wird Hochverfügbarkeit sichergestellt?
+        answer: |
+          Die Applikation ist so gestaltet, dass der Ausfall oder Neustart eines Pods toleriert wird. Für eine Bereitstellung mit Hochverfügbarkeit sind mindestens zwei laufende Pods notwendig, die auf demselben Container-Image basieren. Beide Pods müssen in zwei getrennten Verfügbarkeitszonen / Rechenzentren gestartet werden (siehe Punkt 26). Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
 
   # ######### #
   # Context 6 #
   # ######### #
   - context: |
-      ## Deployment und Überwachung
+      ## Externe Persistenz (SOLL)
+      Daten werden, soweit notwendig, in persistenten Volumes gespeichert. Im Container sollen keine Daten gespeichert werden, da diese nach Beendigung des Containers verloren gehen. Davon ausgenommen sind temporäre Daten, deren Verlust keinen Effekt auf die Applikationsfunktionalität hat. Siehe Punkt 16 zur Ablage von Logdaten.
 
-      ### Deployment mit K8s Operator oder Helm Chart (MUSS)
-      Die Applikation muss Helm Charts oder einen Kubernetes Operator für das Deployment verwenden. Wird ein Operator verwendet muss dieser über ein Helm Chart ausgerollt werden. Für die Nutzung in Systemumgebungen außerhalb der Entwicklung (dev) müssen Helm Charts paketiert und in der Registry der ICP-Plattform abgelegt werden. Seitens des Applikationsteams bzw. ISV wird ein für ICP (OpenShift) getestetes und funktionales Deployment bereitgestellt.
+      ## Kommunikation (SOLL)
+      Applikationen sind hinsichtlich ihrer Netzwerkverbindung so konfiguriert, dass sie mittels TLS ausschließlich verschlüsselt und zertifikatsbasierend miteinander kommunizieren.
 
-      ### Logging (MUSS/SOLL)
-      Betriebliche Logdaten, die an STDOUT/STDERR gesendet werden, werden durch ICP erfasst und für eine begrenzte Frist vorgehalten. Diese Logdaten sollten nicht in eigene persistente Volumes gespeichert werden (siehe Punkt 13). Die Applikation soll Logs in einem maschinenlesbaren Textformat ausgeben.
-
-      ### Deployment mit Helm 3 (MUSS)
-      Bei Verwendung von Helm muss mindestens Helm 3 verwendet werden (Details zum Hintergrund).
+      ## Kommunikation (MUSS)
+      Applikationen sind so konfiguriert, dass sie ausschließlich authentisiert miteinander kommunizieren.
 
     questions_and_answers:
       - question: |
-          Welche Deployment-Methoden sind für ICP zugelassen?
+          Wo sollen Daten gespeichert werden?
         answer: |
-          Die Applikation muss Helm Charts oder einen Kubernetes Operator für das Deployment verwenden. Wird ein Operator verwendet muss dieser über ein Helm Chart ausgerollt werden. Für die Nutzung in Systemumgebungen außerhalb der Entwicklung (dev) müssen Helm Charts paketiert und in der Registry der ICP-Plattform abgelegt werden.
+          Daten werden, soweit notwendig, in persistenten Volumes gespeichert. Im Container sollen keine Daten gespeichert werden, da diese nach Beendigung des Containers verloren gehen. Davon ausgenommen sind temporäre Daten, deren Verlust keinen Effekt auf die Applikationsfunktionalität hat.
       - question: |
-          Wie werden Logdaten in ICP verwaltet?
+          Welche Anforderungen gelten für verschlüsselte Kommunikation?
         answer: |
-          Betriebliche Logdaten, die an STDOUT/STDERR gesendet werden, werden durch ICP erfasst und für eine begrenzte Frist vorgehalten. Diese Logdaten sollten nicht in eigene persistente Volumes gespeichert werden (siehe Punkt 13). Die Applikation soll Logs in einem maschinenlesbaren Textformat ausgeben.
+          Applikationen sind hinsichtlich ihrer Netzwerkverbindung so konfiguriert, dass sie mittels TLS ausschließlich verschlüsselt und zertifikatsbasierend miteinander kommunizieren.
       - question: |
-          Welche Helm-Version ist mindestens erforderlich?
+          Welche Kommunikationsanforderungen sind verpflichtend?
         answer: |
-          Bei Verwendung von Helm muss mindestens Helm 3 verwendet werden (Details zum Hintergrund).
+          Applikationen sind so konfiguriert, dass sie ausschließlich authentisiert miteinander kommunizieren.
 
   # ######### #
   # Context 7 #
   # ######### #
   - context: |
-      ## Ressourcen-Management und Hochverfügbarkeit
+      ## Deployment mit K8s Operator oder Helm Chart (MUSS)
+      Die Applikation muss Helm Charts oder einen Kubernetes Operator für das Deployment verwenden. Wird ein Operator verwendet muss dieser über ein Helm Chart ausgerollt werden. Für die Nutzung in Systemumgebungen außerhalb der Entwicklung (dev) müssen Helm Charts paketiert und in der Registry der ICP-Plattform abgelegt werden.
 
-      ### Begrenzungen und Quotas (MUSS)
-      Applikationsteams und / oder externe ISV müssen eine maschinenlesbare Übersicht der Container-Images und ihrer Ressourcen (CPU, Memory, Speicherkapazität, und IOPS bei Bedarf) bereitstellen, aus der die notwendigen Gesamt-Ressourcen / Quotas pro Kubernetes Namespace hergeleitet werden können. Die entsprechenden Requests (CPU und Memory) und Limits (Memory) müssen im Deployment, dem StatefulSet oder dem jeweils verwendeten Kubernetes Objekt hinterlegt werden.
+      ## Deployment mit K8s Operator oder Helm Chart (MUSS)
+      Seitens des Applikationsteams bzw. ISV wird ein für ICP (OpenShift) getestetes und funktionales Deployment bereitgestellt.
 
-      ### HA/DR (MUSS)
-      Seitens der Applikationsteams bzw. des externen ISV wird sichergestellt, dass ein hochverfügbares Deployment der Applikation in mindestens zwei Verfügbarkeitszonen erfolgt (siehe auch Punkt 12). Beispiel: PodTopologySpreadConstraints. Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
+      ## Logging (MUSS)
+      Betriebliche Logdaten, die an STDOUT/STDERR gesendet werden, werden durch ICP erfasst und für eine begrenzte Frist vorgehalten. Diese Logdaten sollten nicht in eigene persistente Volumes gespeichert werden (siehe Punkt 13).
 
-      ### Multikomponenten Anwendung (SOLL)
-      Wenn die Applikation aus mehreren Komponenten besteht und/oder mehrere externe Dienste benutzt, müssen diese in passender Form beschrieben werden. Das kann z.B. ein Architekturbild sein, das alle notwendigen Komponenten (Microservices und ihre Abhängigkeiten) enthält.
-
-      ### PVC/PV dynamisch (MUSS)
-      Persistenter Speicher wird dynamisch über Kubernetes Persistent Volumes (PV) bereitgestellt. Die Nutzung von statischem Storage (wie beispielsweise hostpath) wird nicht unterstützt. Das Applikationsteam und / oder externe ISV stellt Persistent Volume Claims (PVCs) für dynamischen persistenten Speicher bereit. ICP arbeitet hier mit Storage Optionen die CSI (Container Storage Interface) kompatibel sind. Die Daten im persistenten Speicher steht im Allgemeinen nicht nach einer Cluster-Neuinstallation zur Verfügung (bspw. im Rahmen von Desaster Recovery).
+      ## Logging (SOLL)
+      Die Applikation soll Logs in einem maschinenlesbaren Textformat ausgeben.
 
     questions_and_answers:
       - question: |
-          Welche Informationen müssen über Ressourcen-Anforderungen bereitgestellt werden?
+          Welche Deployment-Methoden sind erforderlich?
         answer: |
-          Applikationsteams und / oder externe ISV müssen eine maschinenlesbare Übersicht der Container-Images und ihrer Ressourcen (CPU, Memory, Speicherkapazität, und IOPS bei Bedarf) bereitstellen, aus der die notwendigen Gesamt-Ressourcen / Quotas pro Kubernetes Namespace hergeleitet werden können. Die entsprechenden Requests (CPU und Memory) und Limits (Memory) müssen im Deployment, dem StatefulSet oder dem jeweils verwendeten Kubernetes Objekt hinterlegt werden.
+          Die Applikation muss Helm Charts oder einen Kubernetes Operator für das Deployment verwenden. Wird ein Operator verwendet muss dieser über ein Helm Chart ausgerollt werden. Für die Nutzung in Systemumgebungen außerhalb der Entwicklung (dev) müssen Helm Charts paketiert und in der Registry der ICP-Plattform abgelegt werden.
       - question: |
-          Wie wird Hochverfügbarkeit auf Deployment-Ebene sichergestellt?
+          Welche Anforderungen gelten für bereitgestellte Deployments?
         answer: |
-          Seitens der Applikationsteams bzw. des externen ISV wird sichergestellt, dass ein hochverfügbares Deployment der Applikation in mindestens zwei Verfügbarkeitszonen erfolgt (siehe auch Punkt 12). Beispiel: PodTopologySpreadConstraints. Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
+          Seitens des Applikationsteams bzw. ISV wird ein für ICP (OpenShift) getestetes und funktionales Deployment bereitgestellt.
       - question: |
-          Wie funktioniert die dynamische Speicherbereitstellung in ICP?
+          Wie werden Logs verwaltet?
         answer: |
-          Persistenter Speicher wird dynamisch über Kubernetes Persistent Volumes (PV) bereitgestellt. Die Nutzung von statischem Storage (wie beispielsweise hostpath) wird nicht unterstützt. Das Applikationsteam und / oder externe ISV stellt Persistent Volume Claims (PVCs) für dynamischen persistenten Speicher bereit. ICP arbeitet hier mit Storage Optionen die CSI (Container Storage Interface) kompatibel sind.
+          Betriebliche Logdaten, die an STDOUT/STDERR gesendet werden, werden durch ICP erfasst und für eine begrenzte Frist vorgehalten. Diese Logdaten sollten nicht in eigene persistente Volumes gespeichert werden (siehe Punkt 13). Die Applikation soll Logs in einem maschinenlesbaren Textformat ausgeben.
 
   # ######### #
   # Context 8 #
   # ######### #
   - context: |
-      ## Organisatorische und betriebliche Anforderungen
-
-      ### Aktualisierung SLA (MUSS)
+      ## Aktualisierung SLA (MUSS)
       Wenn eine neue Version eines Basis- oder Build-Images verfügbar wird, die ein hohes Sicherheitsrisiko behebt, muss ein neues Container-Image basierend auf diesen Images innerhalb der vertraglich definierten Zeiten bzw. gemäß den RZF-Vorgaben bereitgestellt werden. Die Verantwortung liegt beim Eigentümer des Image-Manifests (Dockerfiles). Dieses Image muss im Anschluss zeitnah ausgerollt werden.
 
-      ### Unveränderlichkeit (MUSS)
+      ## Unveränderlichkeit (MUSS)
       Container-Images werden spätestens ab Systemumgebung QSI unveränderlich (immutable) weitergeleitet. Veränderungen an dem Container-Images sind ab diesem Punkt nicht mehr erlaubt. Bei der Referenzierung von Containerimages (z.B. in Deploymentbeschreibungen) ist spätestens ab Systemumgebung QSI auf SHA-Digests, mindestens aber eindeutige Versionsnummern zu verweisen, anstelle von laufenden Tags wie "latest".
 
-      ### Lizensierung (MUSS)
+      ## Lizensierung (MUSS)
       Externe ISV und interne Applikationsteams stellen sicher, dass alle Softwarekomponenten in zur Verfügung gestellten Container-Images ausreichend lizensiert sind.
 
-      ### Automatische Aktualisierung (MUSS)
+      ## Automatische Aktualisierung (MUSS)
       Kontinuierliche Updates der Container-Images werden durch einen automatisierten Prozess mit einem sicheren Endpunkt, der durch den externen ISV oder dem Applikationsteam bereitgestellt wird, realisiert. Die Images müssen in einer Container Registry abgelegt sein, ein FTP Server als Quelle ist z.B. nicht valide.
 
     questions_and_answers:
       - question: |
-          Welche SLA gelten für Sicherheitsupdates von Container-Images?
+          Welche SLA gelten für Sicherheitsupdates?
         answer: |
           Wenn eine neue Version eines Basis- oder Build-Images verfügbar wird, die ein hohes Sicherheitsrisiko behebt, muss ein neues Container-Image basierend auf diesen Images innerhalb der vertraglich definierten Zeiten bzw. gemäß den RZF-Vorgaben bereitgestellt werden. Die Verantwortung liegt beim Eigentümer des Image-Manifests (Dockerfiles). Dieses Image muss im Anschluss zeitnah ausgerollt werden.
       - question: |
-          Ab wann gelten Container-Images als unveränderlich?
+          Ab wann sind Container-Images unveränderlich?
         answer: |
-          Container-Images werden spätestens ab Systemumgebung QSI unveränderlich (immutable) weitergeleitet. Veränderungen an dem Container-Images sind ab diesem Punkt nicht mehr erlaubt. Bei der Referenzierung von Containerimages ist spätestens ab Systemumgebung QSI auf SHA-Digests, mindestens aber eindeutige Versionsnummern zu verweisen, anstelle von laufenden Tags wie "latest".
+          Container-Images werden spätestens ab Systemumgebung QSI unveränderlich (immutable) weitergeleitet. Veränderungen an dem Container-Images sind ab diesem Punkt nicht mehr erlaubt. Bei der Referenzierung von Containerimages (z.B. in Deploymentbeschreibungen) ist spätestens ab Systemumgebung QSI auf SHA-Digests, mindestens aber eindeutige Versionsnummern zu verweisen, anstelle von laufenden Tags wie "latest".
       - question: |
-          Welche Anforderungen gelten für die Lizensierung von Software?
+          Welche Lizensierungsanforderungen bestehen?
         answer: |
           Externe ISV und interne Applikationsteams stellen sicher, dass alle Softwarekomponenten in zur Verfügung gestellten Container-Images ausreichend lizensiert sind.
-      - question: |
-          Wie sollen Container-Image Updates automatisiert werden?
-        answer: |
-          Kontinuierliche Updates der Container-Images werden durch einen automatisierten Prozess mit einem sicheren Endpunkt, der durch den externen ISV oder dem Applikationsteam bereitgestellt wird, realisiert. Die Images müssen in einer Container Registry abgelegt sein, ein FTP Server als Quelle ist z.B. nicht valide.
 
   # ######### #
   # Context 9 #
   # ######### #
   - context: |
-      ## Sicherheitsanforderungen
+      ## HA/DR (MUSS)
+      Seitens der Applikationsteams bzw. des externen ISV wird sichergestellt, dass ein hochverfügbares Deployment der Applikation in mindestens zwei Verfügbarkeitszonen erfolgt (siehe auch Punkt 12). Beispiel: PodTopologySpreadConstraints. Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
 
-      ### Imageakzeptanz (MUSS)
-      Container-Images werden mit einem Prüfwerkzeug, das Teil der ICP Plattform ist, überprüft (Schwachstellen-Prüfung). Bei kritischen Sicherheitslücken wird das Container-Image nicht akzeptiert und das Applikationsteam / der externe ISV müssen ein sicheres Image innerhalb der definierten Dienstleistungsvereinbarung bereitstellen. Die Mitigation von Sicherheitsrisiken (z.B. das Patchen) ist die Verantwortlichkeit der Eigentümer des Image-Manifests (Dockerfile).
+      ## Begrenzungen und Quotas (MUSS)
+      Applikationsteams und / oder externe ISV müssen eine maschinenlesbare Übersicht der Container-Images und ihrer Ressourcen (CPU, Memory, Speicherkapazität, und IOPS bei Bedarf) bereitstellen, aus der die notwendigen Gesamt-Ressourcen / Quotas pro Kubernetes Namespace hergeleitet werden können. Die entsprechenden Requests (CPU und Memory) und Limits (Memory) müssen im Deployment, dem StatefulSet oder dem jeweils verwendeten Kubernetes Objekt hinterlegt werden.
 
-      ### Lösung von später erkannten Schwachstellen (MUSS)
-      Container-Images werden regelmäßig auf Basis der aktuellen CVE Datenquelle überprüft. Das Auftreten einer kritischen Sicherheitslücke nach ursprünglicher Akzeptanz (im Falle neuer CVE Einträge) ist möglich. Die Verantwortung für die Behebung innerhalb der definierten Servicevereinbarung (SLA) obliegt dem Team, welches sich für das Image-Manifest (Dockerfile) verantwortlich zeichnet. In der Regel ist dies das Applikationsteam oder der ISV.
+      ## Deployment mit Helm 3 (MUSS)
+      Bei Verwendung von Helm muss mindestens Helm 3 verwendet werden (Details zum Hintergrund).
 
-      ### Remote-Containerzugriff (SOLL)
-      Container dürfen keine Dienste für einen administrativen Fernzugriff (Beispiel SSH Daemon) ausführen.
-
-      ### Mikro-Segmentation von Containern (MUSS)
-      Sämtliche additive Regeln zum Einschränken der Kommunikationsverbindung eigener Container müssen von den Applikationsteams angelegt (bzw. von einem externen ISV bereitgestellt) und verwaltet werden. Das Applikationsteam stellt über geeignete NetworkPolicies sicher, dass nur notwendige Kommunikationsbeziehungen möglich sind (Mikro-Segmentierung). Gemäß den Sicherheitsvorgaben sind auch die Kommunikation im Namespace minimal freizuschalten, was dem Applikationsteams obliegt.
-
-      ### Berechtigungen für Service-Accounts (MUSS)
-      Berechtigungen für Service-Accounts müssen auf die unbedingt notwendigen Rechte (minimale Berechtigungen) beschränkt werden. Pods, die keinen Service-Account benötigen, sollten diesen nicht einsehen können und keinen Zugriff auf entsprechende Token haben. Hinweis: Dieser Punkt bezieht sich ausschließlich ICP-Cluster interne Service-Accounts. Service-Accounts von angrenzenden Systemen müssen mit den entsprechenden Verantwortlichen abgestimmt werden.
+      ## Multikomponenten Anwendung (SOLL)
+      Wenn die Applikation aus mehreren Komponenten besteht und/oder mehrere externe Dienste benutzt, müssen diese in passender Form beschrieben werden. Das kann z.B. ein Architekturbild sein, das alle notwendigen Komponenten (Microservices und ihre Abhängigkeiten) enthält.
 
     questions_and_answers:
       - question: |
-          Wie werden Container-Images auf Sicherheitslücken überprüft?
+          Wie wird hochverfügbares Deployment sichergestellt?
         answer: |
-          Container-Images werden mit einem Prüfwerkzeug, das Teil der ICP Plattform ist, überprüft (Schwachstellen-Prüfung). Bei kritischen Sicherheitslücken wird das Container-Image nicht akzeptiert und das Applikationsteam / der externe ISV müssen ein sicheres Image innerhalb der definierten Dienstleistungsvereinbarung bereitstellen.
+          Seitens der Applikationsteams bzw. des externen ISV wird sichergestellt, dass ein hochverfügbares Deployment der Applikation in mindestens zwei Verfügbarkeitszonen erfolgt (siehe auch Punkt 12). Beispiel: PodTopologySpreadConstraints. Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
       - question: |
-          Wer ist für die Behebung von Sicherheitslücken in Container-Images verantwortlich?
+          Welche Ressourcen-Informationen sind bereitzustellen?
         answer: |
-          Die Verantwortung für die Behebung innerhalb der definierten Servicevereinbarung (SLA) obliegt dem Team, welches sich für das Image-Manifest (Dockerfile) verantwortlich zeichnet. In der Regel ist dies das Applikationsteam oder der ISV. Die Mitigation von Sicherheitsrisiken (z.B. das Patchen) ist die Verantwortlichkeit der Eigentümer des Image-Manifests.
+          Applikationsteams und / oder externe ISV müssen eine maschinenlesbare Übersicht der Container-Images und ihrer Ressourcen (CPU, Memory, Speicherkapazität, und IOPS bei Bedarf) bereitstellen, aus der die notwendigen Gesamt-Ressourcen / Quotas pro Kubernetes Namespace hergeleitet werden können. Die entsprechenden Requests (CPU und Memory) und Limits (Memory) müssen im Deployment, dem StatefulSet oder dem jeweils verwendeten Kubernetes Objekt hinterlegt werden.
       - question: |
-          Welche Anforderungen gelten für die Netzwerk-Segmentierung?
+          Welche Helm-Version ist erforderlich?
         answer: |
-          Sämtliche additive Regeln zum Einschränken der Kommunikationsverbindung eigener Container müssen von den Applikationsteams angelegt (bzw. von einem externen ISV bereitgestellt) und verwaltet werden. Das Applikationsteam stellt über geeignete NetworkPolicies sicher, dass nur notwendige Kommunikationsbeziehungen möglich sind (Mikro-Segmentierung).
-      - question: |
-          Welche Berechtigungen sollen Service-Accounts haben?
-        answer: |
-          Berechtigungen für Service-Accounts müssen auf die unbedingt notwendigen Rechte (minimale Berechtigungen) beschränkt werden. Pods, die keinen Service-Account benötigen, sollten diesen nicht einsehen können und keinen Zugriff auf entsprechende Token haben.
+          Bei Verwendung von Helm muss mindestens Helm 3 verwendet werden (Details zum Hintergrund).
 
   # ######### #
   # Context 10 #
   # ######### #
   - context: |
-      ## Allgemeine Betriebsanforderungen
+      ## PVC/PV dynamisch (MUSS)
+      Persistenter Speicher wird dynamisch über Kubernetes Persistent Volumes (PV) bereitgestellt. Die Nutzung von statischem Storage (wie beispielsweise hostpath) wird nicht unterstützt. Das Applikationsteam und / oder externe ISV stellt Persistent Volume Claims (PVCs) für dynamischen persistenten Speicher bereit. ICP arbeitet hier mit Storage Optionen die CSI (Container Storage Interface) kompatibel sind. Die Daten im persistenten Speicher steht im Allgemeinen nicht nach einer Cluster-Neuinstallation zur Verfügung (bspw. im Rahmen von Desaster Recovery).
 
-      ### Pod Neustarts (SOLL)
-      Alle Pods werden in regelmäßigen Abständen automatisch neu gestartet. Keiner dieser Pods läuft hierbei länger als 24 Stunden. Durch ein geeignetes Deployment ist die Verfügbarkeit der Anwendung sicherzustellen. Hinweis: Ein Neustart der Pods wird von ICP erzwungen. Die Nichteinhaltung dieses Kriteriums bedeutet, dass Einschränkungen wie z.B. kurze Ausfälle des Workloads während Pod-Neustarts hingenommen werden.
+      ## Imageakzeptanz (MUSS)
+      Container-Images werden mit einem Prüfwerkzeug, das Teil der ICP Plattform ist, überprüft (Schwachstellen-Prüfung). Bei kritischen Sicherheitslücken wird das Container-Image nicht akzeptiert und das Applikationsteam / der externe ISV müssen ein sicheres Image innerhalb der definierten Dienstleistungsvereinbarung bereitstellen. Die Mitigation von Sicherheitsrisiken (z.B. das Patchen) ist die Verantwortlichkeit der Eigentümer des Image-Manifests (Dockerfile).
+
+      ## Lösung von später erkannten Schwachstellen (MUSS)
+      Container-Images werden regelmäßig auf Basis der aktuellen CVE Datenquelle überprüft. Das Auftreten einer kritischen Sicherheitslücke nach ursprünglicher Akzeptanz (im Falle neuer CVE Einträge) ist möglich. Die Verantwortung für die Behebung innerhalb der definierten Servicevereinbarung (SLA) obliegt dem Team, welches sich für das Image-Manifest (Dockerfile) verantwortlich zeichnet. In der Regel ist dies das Applikationsteam oder der ISV.
 
     questions_and_answers:
       - question: |
-          Wie lange dürfen Pods maximal laufen?
+          Wie funktioniert persistenter Speicher?
         answer: |
-          Alle Pods werden in regelmäßigen Abständen automatisch neu gestartet. Keiner dieser Pods läuft hierbei länger als 24 Stunden. Durch ein geeignetes Deployment ist die Verfügbarkeit der Anwendung sicherzustellen. Ein Neustart der Pods wird von ICP erzwungen.
+          Persistenter Speicher wird dynamisch über Kubernetes Persistent Volumes (PV) bereitgestellt. Die Nutzung von statischem Storage (wie beispielsweise hostpath) wird nicht unterstützt. Das Applikationsteam und / oder externe ISV stellt Persistent Volume Claims (PVCs) für dynamischen persistenten Speicher bereit. ICP arbeitet hier mit Storage Optionen die CSI (Container Storage Interface) kompatibel sind. Die Daten im persistenten Speicher steht im Allgemeinen nicht nach einer Cluster-Neuinstallation zur Verfügung (bspw. im Rahmen von Desaster Recovery).
+      - question: |
+          Wie werden Container-Images auf Sicherheit geprüft?
+        answer: |
+          Container-Images werden mit einem Prüfwerkzeug, das Teil der ICP Plattform ist, überprüft (Schwachstellen-Prüfung). Bei kritischen Sicherheitslücken wird das Container-Image nicht akzeptiert und das Applikationsteam / der externe ISV müssen ein sicheres Image innerhalb der definierten Dienstleistungsvereinbarung bereitstellen. Die Mitigation von Sicherheitsrisiken (z.B. das Patchen) ist die Verantwortlichkeit der Eigentümer des Image-Manifests (Dockerfile).
+      - question: |
+          Wer ist für die Behebung von Sicherheitslücken verantwortlich?
+        answer: |
+          Container-Images werden regelmäßig auf Basis der aktuellen CVE Datenquelle überprüft. Das Auftreten einer kritischen Sicherheitslücke nach ursprünglicher Akzeptanz (im Falle neuer CVE Einträge) ist möglich. Die Verantwortung für die Behebung innerhalb der definierten Servicevereinbarung (SLA) obliegt dem Team, welches sich für das Image-Manifest (Dockerfile) verantwortlich zeichnet. In der Regel ist dies das Applikationsteam oder der ISV.
+
+  # ######### #
+  # Context 11 #
+  # ######### #
+  - context: |
+      ## Remote-Containerzugriff (SOLL)
+      Container dürfen keine Dienste für einen administrativen Fernzugriff (Beispiel SSH Daemon) ausführen.
+
+      ## Mikro-Segmentation von Containern (MUSS)
+      Sämtliche additive Regeln zum Einschränken der Kommunikationsverbindung eigener Container müssen von den Applikationsteams angelegt (bzw. von einem externen ISV bereitgestellt) und verwaltet werden. Das Applikationsteam stellt über geeignete NetworkPolicies sicher, dass nur notwendige Kommunikationsbeziehungen möglich sind (Mikro-Segmentierung). Gemäß den Sicherheitsvorgaben sind auch die Kommunikation im Namespace minimal freizuschalten, was dem Applikationsteams obliegt.
+
+      ## Berechtigungen für Service-Accounts (MUSS)
+      Berechtigungen für Service-Accounts müssen auf die unbedingt notwendigen Rechte (minimale Berechtigungen) beschränkt werden. Pods, die keinen Service-Account benötigen, sollten diesen nicht einsehen können und keinen Zugriff auf entsprechende Token haben. Hinweis: Dieser Punkt bezieht sich ausschließlich ICP-Cluster interne Service-Accounts. Service-Accounts von angrenzenden Systemen müssen mit den entsprechenden Verantwortlichen abgestimmt werden.
+
+    questions_and_answers:
+      - question: |
+          Welche Einschränkungen gelten für Remote-Zugriff?
+        answer: |
+          Container dürfen keine Dienste für einen administrativen Fernzugriff (Beispiel SSH Daemon) ausführen.
+      - question: |
+          Wie ist die Netzwerk-Segmentierung umzusetzen?
+        answer: |
+          Sämtliche additive Regeln zum Einschränken der Kommunikationsverbindung eigener Container müssen von den Applikationsteams angelegt (bzw. von einem externen ISV bereitgestellt) und verwaltet werden. Das Applikationsteam stellt über geeignete NetworkPolicies sicher, dass nur notwendige Kommunikationsbeziehungen möglich sind (Mikro-Segmentierung).
+      - question: |
+          Welche Berechtigungen sollen Service-Accounts haben?
+        answer: |
+          Berechtigungen für Service-Accounts müssen auf die unbedingt notwendigen Rechte (minimale Berechtigungen) beschränkt werden. Pods, die keinen Service-Account benötigen, sollten diesen nicht einsehen können und keinen Zugriff auf entsprechende Token haben. Hinweis: Dieser Punkt bezieht sich ausschließlich ICP-Cluster interne Service-Accounts.
+
+  # ######### #
+  # Context 12 #
+  # ######### #
+  - context: |
+      ## Pod Neustarts (SOLL)
+      Alle Pods werden in regelmäßigen Abständen automatisch neu gestartet. Keiner dieser Pods läuft hierbei länger als 24 Stunden. Durch ein geeignetes Deployment ist die Verfügbarkeit der Anwendung sicherzustellen. Hinweis: Ein Neustart der Pods wird von ICP erzwungen. Die Nichteinhaltung dieses Kriteriums bedeutet, dass Einschränkungen wie z.B. kurze Ausfälle des Workloads während Pod-Neustarts hingenommen werden.
+
+      ## Automatische Aktualisierung (MUSS)
+      Kontinuierliche Updates der Container-Images werden durch einen automatisierten Prozess mit einem sicheren Endpunkt, der durch den externen ISV oder dem Applikationsteam bereitgestellt wird, realisiert. Die Images müssen in einer Container Registry abgelegt sein, ein FTP Server als Quelle ist z.B. nicht valide.
+
+      ## ISV Definition
+      ISV (Independent Software Vendor) ist ein externer Lieferant für container-basierte Applikationen, die auf ICP betrieben werden
+
+    questions_and_answers:
+      - question: |
+          Wie lange dürfen Pods laufen?
+        answer: |
+          Alle Pods werden in regelmäßigen Abständen automatisch neu gestartet. Keiner dieser Pods läuft hierbei länger als 24 Stunden. Durch ein geeignetes Deployment ist die Verfügbarkeit der Anwendung sicherzustellen. Hinweis: Ein Neustart der Pods wird von ICP erzwungen. Die Nichteinhaltung dieses Kriteriums bedeutet, dass Einschränkungen wie z.B. kurze Ausfälle des Workloads während Pod-Neustarts hingenommen werden.
+      - question: |
+          Wie werden automatische Updates realisiert?
+        answer: |
+          Kontinuierliche Updates der Container-Images werden durch einen automatisierten Prozess mit einem sicheren Endpunkt, der durch den externen ISV oder dem Applikationsteam bereitgestellt wird, realisiert. Die Images müssen in einer Container Registry abgelegt sein, ein FTP Server als Quelle ist z.B. nicht valide.
+      - question: |
+          Was ist ein ISV?
+        answer: |
+          ISV (Independent Software Vendor) ist ein externer Lieferant für container-basierte Applikationen, die auf ICP betrieben werden
+
+  # ######### #
+  # Context 13 #
+  # ######### #
+  - context: |
+      ## VABI-Verantwortlichkeitsmatrix
+
+      Der Onboardingprozess für neue Applikationsteams auf der RedHat OpenShift Container Plattform folgt dem VABI-Verantwortlichkeitsmodell (Verantwortlich, Ausführend, Beratend, Informiert).
+
+      ## VABI-Legende
+
+      - V (Verantwortlich): Trägt die Gesamtverantwortung für die Aufgabe und deren Ergebnis
+      - A (Ausführend): Führt die Aufgabe praktisch durch und arbeitet an der Umsetzung
+      - B (Beratend): Stellt Expertise zur Verfügung und unterstützt beratend bei der Durchführung
+      - I (Informiert): Wird über Fortschritt und Ergebnisse informiert, aber nicht aktiv eingebunden
+
+      ## Verfahrensname
+      Definition und Abstimmung des offiziellen Verfahrensnamens für das Onboarding-Projekt zwischen allen Beteiligten
+
+      ## Applikationsteam Organisation
+      Identifikation der Teamstruktur, Definition von Rollen und Benennung der Ansprechpartner für das Projekt
+
+    questions_and_answers:
+      - question: |
+          Was bedeutet das VABI-Verantwortlichkeitsmodell?
+        answer: |
+          V (Verantwortlich): Trägt die Gesamtverantwortung für die Aufgabe und deren Ergebnis. A (Ausführend): Führt die Aufgabe praktisch durch und arbeitet an der Umsetzung. B (Beratend): Stellt Expertise zur Verfügung und unterstützt beratend bei der Durchführung. I (Informiert): Wird über Fortschritt und Ergebnisse informiert, aber nicht aktiv eingebunden.
+      - question: |
+          Was umfasst die Definition des Verfahrensnamens?
+        answer: |
+          Definition und Abstimmung des offiziellen Verfahrensnamens für das Onboarding-Projekt zwischen allen Beteiligten
+      - question: |
+          Was beinhaltet die Applikationsteam Organisation?
+        answer: |
+          Identifikation der Teamstruktur, Definition von Rollen und Benennung der Ansprechpartner für das Projekt
+
+  # ######### #
+  # Context 14 #
+  # ######### #
+  - context: |
+      ## Confluence
+      Erstellung der Confluence-Projektseite mit Dokumentationsstruktur und Zugriffsberechtigungen
+
+      ## Team-Mailbox
+      Einrichtung einer dedizierten Funktions-Mailbox für das Applikationsteam mit entsprechenden Verteilerlisten
+
+      ## Workloadbeschreibung
+      Detaillierte technische und fachliche Beschreibung der geplanten Container-Workloads und Anwendungsarchitektur
+
+      ## Akzeptanzkriterien
+      Definition messbarer Kriterien für erfolgreiche Plattform-Bereitstellung mit formeller Bestätigung durch Applikationsteam
+
+      ## Betrieb
+      Entwicklung des Betriebskonzepts inkl. SLA-Definition, Monitoring-Anforderungen und Eskalationsprozesse
+
+      ## Termine
+      Koordination aller Projektmeilensteine und Abhängigkeiten mit Terminplanung für Go-Live
+
+    questions_and_answers:
+      - question: |
+          Was umfasst die Confluence-Erstellung?
+        answer: |
+          Erstellung der Confluence-Projektseite mit Dokumentationsstruktur und Zugriffsberechtigungen
+      - question: |
+          Was beinhaltet die Workloadbeschreibung?
+        answer: |
+          Detaillierte technische und fachliche Beschreibung der geplanten Container-Workloads und Anwendungsarchitektur
+      - question: |
+          Was umfasst das Betriebskonzept?
+        answer: |
+          Entwicklung des Betriebskonzepts inkl. SLA-Definition, Monitoring-Anforderungen und Eskalationsprozesse
+
+  # ######### #
+  # Context 15 #
+  # ######### #
+  - context: |
+      ## Bedarfsermittlung
+      Detaillierte Analyse der benötigten Compute-, Memory-, Storage- und Netzwerk-Ressourcen basierend auf Workload-Anforderungen
+
+      ## Container Plattform Kommunikationsmatrix
+      Dokumentation aller internen Pod-zu-Pod und Service-zu-Service Kommunikationswege innerhalb der Plattform
+
+      ## Ingress/Egress Traffic Kommunikationsmatrix
+      Spezifikation aller eingehenden und ausgehenden Netzwerkverbindungen mit Ports, Protokollen und Zielen
+
+      ## Firewall extern
+      Beantragung und Konfiguration externer Firewall-Regeln für Ingress/Egress Traffic der Container-Workloads
+
+      ## Externe Schnittstellen
+      Identifikation und Dokumentation aller externen API-Abhängigkeiten, Datenbank-Verbindungen und Service-Integrationen
+
+    questions_and_answers:
+      - question: |
+          Was umfasst die Bedarfsermittlung?
+        answer: |
+          Detaillierte Analyse der benötigten Compute-, Memory-, Storage- und Netzwerk-Ressourcen basierend auf Workload-Anforderungen
+      - question: |
+          Was beinhaltet die Container Plattform Kommunikationsmatrix?
+        answer: |
+          Dokumentation aller internen Pod-zu-Pod und Service-zu-Service Kommunikationswege innerhalb der Plattform
+      - question: |
+          Was umfassen externe Schnittstellen?
+        answer: |
+          Identifikation und Dokumentation aller externen API-Abhängigkeiten, Datenbank-Verbindungen und Service-Integrationen
+
+  # ######### #
+  # Context 16 #
+  # ######### #
+  - context: |
+      ## RBAC / AD Integration
+      Einrichtung der Benutzerauthentifizierung, Gruppenmapping und Integration mit Active Directory-Services
+
+      ## Namespaces
+      Erstellung und Konfiguration der Kubernetes-Namespaces entsprechend der Umgebungsstrategie (dev/test/prod)
+
+      ## Berechtigungen
+      Zuweisung spezifischer OpenShift-Rollen und Kubernetes-RBAC-Policies basierend auf Prinzip der minimalen Berechtigung
+
+      ## Quota
+      Definition und Implementierung von Ressourcen-Quotas pro Namespace zur Gewährleistung fairer Ressourcenverteilung
+
+      ## LimitRange
+      Konfiguration von Default- und Maximum-Ressourcenlimits für Container zur Vermeidung von Resource-Starvation
+
+      ## Projektphasen und Meilensteine
+      1. Organisationsphase (Woche 1-2): Projektsetup und Teamorganisation
+      2. Planungsphase (Woche 3-4): Ressourcen- und Netzwerkplanung
+      3. Konfigurationsphase (Woche 5-6): Technische Implementierung
+      4. Umsetzungsphase (Woche 7-8): Deployment und Integrationstests
+      5. Go-Live (Woche 9): Produktivschaltung und Übergabe an den Betrieb
+
+    questions_and_answers:
+      - question: |
+          Was umfasst die RBAC / AD Integration?
+        answer: |
+          Einrichtung der Benutzerauthentifizierung, Gruppenmapping und Integration mit Active Directory-Services
+      - question: |
+          Wie werden Namespaces konfiguriert?
+        answer: |
+          Erstellung und Konfiguration der Kubernetes-Namespaces entsprechend der Umgebungsstrategie (dev/test/prod)
+      - question: |
+          Welche Projektphasen gibt es im Onboarding-Prozess?
+        answer: |
+          1. Organisationsphase (Woche 1-2): Projektsetup und Teamorganisation 2. Planungsphase (Woche 3-4): Ressourcen- und Netzwerkplanung 3. Konfigurationsphase (Woche 5-6): Technische Implementierung 4. Umsetzungsphase (Woche 7-8): Deployment und Integrationstests 5. Go-Live (Woche 9): Produktivschaltung und Übergabe an den Betrieb
+
+  # ######### #
+  # Context 17 #
+  # ######### #
+  - context: |
+      ## Eskalationspfade
+
+      Bei Problemen oder Verzögerungen erfolgt die Eskalation über:
+      1. Technische Eskalation: Plattform-Team → Infrastructure-Team → IT-Operations-Manager
+      2. Fachliche Eskalation: Applikationsteam → Projekt-Sponsor → Business-Owner
+      3. Projekt-Eskalation: Projekt-Koordination → IT-Portfolio-Management
+
+      ## Kontakt und Support
+
+      - Plattform-Team: plattform-support@icp-company.de
+      - Projekt-Koordination: plattform-onboarding@icp-company.de
+      - 24/7 Support: plattform-support@icp-company.de
+
+      ## Externe Abhängigkeiten - Abteilungen
+
+      - IT-Service-Desk: Bereitstellung von IT-Basisservices wie E-Mail-Systeme
+      - Datenschutzbeauftragte: Bewertung und Freigabe datenschutzrechtlicher Aspekte
+      - Netzwerk-Security-Team: Firewall-Management und Netzwerk-Sicherheitsrichtlinien
+      - Enterprise-Architecture: Architektur-Governance und Schnittstellenstandards
+      - Identity-Management-Team: Active Directory und Benutzer-/Gruppenverwaltung
+      - Infrastructure-Team: Hardware-Bereitstellung und Rechenzentrumsinfrastruktur
+
+    questions_and_answers:
+      - question: |
+          Wie funktionieren die Eskalationspfade?
+        answer: |
+          Bei Problemen oder Verzögerungen erfolgt die Eskalation über: 1. Technische Eskalation: Plattform-Team → Infrastructure-Team → IT-Operations-Manager 2. Fachliche Eskalation: Applikationsteam → Projekt-Sponsor → Business-Owner 3. Projekt-Eskalation: Projekt-Koordination → IT-Portfolio-Management
+      - question: |
+          Welche Kontaktmöglichkeiten gibt es für Support?
+        answer: |
+          Plattform-Team: plattform-support@icp-company.de, Projekt-Koordination: plattform-onboarding@icp-company.de, 24/7 Support: plattform-support@icp-company.de
+      - question: |
+          Welche externen Abteilungen sind am Onboarding-Prozess beteiligt?
+        answer: |
+          IT-Service-Desk: Bereitstellung von IT-Basisservices wie E-Mail-Systeme, Datenschutzbeauftragte: Bewertung und Freigabe datenschutzrechtlicher Aspekte, Netzwerk-Security-Team: Firewall-Management und Netzwerk-Sicherheitsrichtlinien, Enterprise-Architecture: Architektur-Governance und Schnittstellenstandards, Identity-Management-Team: Active Directory und Benutzer-/Gruppenverwaltung, Infrastructure-Team: Hardware-Bereitstellung und Rechenzentrumsinfrastruktur
 
 document:
-  repo: 'https://github.com/mamurak/rhoai_sc_q2_taxonomy.git'
-  commit: ????????????????????????????
+  repo: "https://github.com/mamurak/rhoai_sc_q2_taxonomy.git"
+  commit: de470252e56b5d593d9e5efde6a71977b09546f4
   patterns:
-    - 'documents/*.md'
+    - "documents/*.md"
