@@ -32,15 +32,15 @@ seed_examples:
       - question: |
           Was ist ICP und welche Version wird verwendet?
         answer: |
-          ICP steht für Interne Container-Plattform und ist die interne ContainerPlattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch setzt ICP auf Red Hat OpenShift Container Plattform auf. In der Regel die aktuelle Version minus 1-2 Versionsständen.
+          ICP steht für Interne Container-Plattform und ist die interne Containerplattform, um containerbasierte Applikationen zu entwickeln, bauen und betreiben. Technisch basiert ICP auf Red Hat OpenShift Container Plattform, in der Regel die aktuelle Version minus 1-2 Versionsständen.
       - question: |
           Was bedeuten die Modalverben MUSS und SOLL?
         answer: |
-          MUSS: So gekennzeichnete Anforderungen müssen unbedingt erfüllt werden. SOLL: Dieser Ausdruck bedeutet, dass eine Anforderung zwar normalerweise erfüllt werden muss, bei stichhaltigen Gründen aber auch davon abgesehen werden kann und dies ggf. auch Genehmigungspflichtig ist (wird bei Kriterium vermerkt). Wenn von diesem Kriterium abgewichen werden kann, bedeutet dass, das ICP-Team beim Betrieb der Plattform davon ausgeht, dass dieses Kriterium erfüllt wird und Einschränkungen die aus Nichterfüllung resultieren vom Applikations-Team akzeptiert werden.
+          MUSS bedeutet, dass diese Anforderungen unbedingt erfüllt werden müssen. SOLL bedeutet, dass eine Anforderung normalerweise erfüllt werden muss, aber bei stichhaltigen Gründen davon abgewichen werden kann - dies ist jedoch genehmigungspflichtig. Das ICP-Team geht beim Betrieb der Plattform davon aus, dass SOLL-Kriterien erfüllt werden, und Einschränkungen aus der Nichterfüllung werden vom Applikations-Team akzeptiert.
       - question: |
           Welche Rolle haben Applikations-Teams?
         answer: |
-          Applikations-Teams sind interne Teams, die containerbasierte Applikationen auf ICP u.a. betreiben. Betrieb bedeutet hier, dass diese Teams das Deployment der Applikation auf ICP und damit auch die notwendigen HELM-Charts oder vergleichbar verantworten.
+          Applikations-Teams sind interne Teams, die containerbasierte Applikationen auf ICP betreiben. Sie sind verantwortlich für das Deployment der Applikation auf ICP und müssen die notwendigen HELM-Charts oder vergleichbare Deployment-Mechanismen bereitstellen.
 
   # ######### #
   # Context 2 #
@@ -62,15 +62,15 @@ seed_examples:
       - question: |
           Welche Architekturstandards unterstützt ICP?
         answer: |
-          ICP unterstützt durch die verwendete Architektur containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Cloud-native- und Micro Service-Architekturen erfordern Applikationen mit eingebauter Redundanz und Verfügbarkeit. Außerdem sollen Applikationen so gestaltet sein, dass sie horizontal skalieren (Scale-out), um die maximale Größe pro Container-Image zu verringern.
+          ICP unterstützt containerbasierte Applikationen, die cloud-nativen Architekturstandards entsprechen. Cloud-native- und Micro Service-Architekturen müssen Applikationen mit eingebauter Redundanz und Verfügbarkeit sein. Zusätzlich sollen Applikationen horizontal skalierbar (Scale-out) gestaltet werden, um die maximale Größe pro Container-Image zu verringern.
       - question: |
           Welche Einschränkungen gibt es bei der Verwendung als Leistungsverzeichnis?
         answer: |
-          Die Kriterien sind in der Formulierung nicht konsistent geeignet, um diese als Ausschlusskriterium im Sinne einer geschlossenen Frage als JA/NEIN zu beantworten. Eine weitere Schärfung für ein LV In der Formulierung ist erforderlich.
+          Die aktuellen Kriterien sind nicht konsistent formuliert, um als Ausschlusskriterium im Sinne einer geschlossenen JA/NEIN-Frage zu dienen. Für die Verwendung als Leistungsverzeichnis ist eine weitere Schärfung der Formulierung erforderlich.
       - question: |
           Was ist bei Updates der Akzeptanzkriterien zu beachten?
         answer: |
-          Beim Update der Akzeptanzkriterien ist auch ein neues Word für die Externe Version zu erstellen.
+          Bei jeder Aktualisierung der Akzeptanzkriterien muss parallel auch ein neues Word-Dokument für die externe Version erstellt werden.
 
   # ######### #
   # Context 3 #
@@ -92,15 +92,15 @@ seed_examples:
       - question: |
           Welche OCI-Kompatibilitätsanforderungen bestehen?
         answer: |
-          Wenn alle Komponenten der containerisierten Applikation vom Applikationsteam oder einem externen Softwareanbieter (ISV) als Container-Images zur Verfügung gestellt werden, ist die Kompatibilität zu den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) sicherzustellen. Ein Image-Manifest (Dockerfile) muss für jedes Container Image mitgeliefert werden.
+          Container-Images müssen mit den Image- und Laufzeitspezifikationen der Open Container Initiative (OCI) kompatibel sein. Zusätzlich muss für jedes Container Image ein Image-Manifest (Dockerfile) mitgeliefert werden, um die Nachvollziehbarkeit zu gewährleisten.
       - question: |
           Welche Anforderungen gelten für minimale Images?
         answer: |
-          Container sind lediglich mit der Software ausgestattet, die benötigt wird, um den zugrunde liegenden Microservice zu betreiben. Sämtliche darüber hinaus nicht benötigte Softwarepakete oder Bibliotheken sind im Image Erstellungsprozess entfernt worden, sodass daraus abgebildete Container als gehärtet betrachtet werden können. Standardbenutzer der verwendeten Software in Containern sind entfernt oder deaktiviert.
+          Container dürfen nur die Software enthalten, die für den Betrieb des Microservices benötigt wird. Alle unnötigen Softwarepakete oder Bibliotheken müssen im Image-Erstellungsprozess entfernt werden, damit die Container als gehärtet gelten können. Standardbenutzer der verwendeten Software müssen entfernt oder deaktiviert werden.
       - question: |
           Welche Berechtigungseinschränkungen gelten für Container?
         answer: |
-          Kein Prozess innerhalb des Containers braucht Root-Berechtigungen. Container mit privilegierten Rechten sind nicht erlaubt. Applikationen sollten in Verzeichnissen mit ausreichenden Rechten gespeichert (z.B. "/apps") werden. Ports unterhalb von 1024 dürfen nicht genutzt werden.
+          Container dürfen keine Root-Berechtigungen verwenden und privilegierte Rechte sind verboten. Applikationen sollen in Verzeichnissen mit ausreichenden Rechten gespeichert werden (z.B. "/apps") und Ports unterhalb von 1024 dürfen nicht genutzt werden.
 
   # ######### #
   # Context 4 #
@@ -119,15 +119,15 @@ seed_examples:
       - question: |
           Wie funktioniert die Benutzer-ID Zuteilung?
         answer: |
-          ICP teilt automatisiert eine nicht privilegierte Benutzer-ID zu, unter der die Prozesse des Containers laufen. Der vom Applikationsteam oder externem ISV ausgelieferte Container sollte diese ID bestimmen und nutzen können - ohne eine fixe ID verwenden zu müssen.
+          ICP teilt automatisch eine nicht privilegierte Benutzer-ID zu, unter der die Container-Prozesse laufen. Container sollten flexibel mit dieser dynamisch zugeteilten ID arbeiten können, ohne auf eine fest kodierte ID angewiesen zu sein.
       - question: |
           Wie sollen nicht-sensible Parameter verwaltet werden?
         answer: |
-          Alle nicht-sensiblen Parameter von Prozeduren oder Container-Images sollten extern spezifiziert werden und nicht im OCI Image enthalten sein, sondern beim Starten an den Container gehangen werden.
+          Nicht-sensible Parameter sollen extern konfiguriert und beim Container-Start übertragen werden, anstatt sie fest im OCI Image zu speichern. Dies ermöglicht eine flexible Konfiguration verschiedener Umgebungen.
       - question: |
           Wie sollen sensible Parameter verwaltet werden?
         answer: |
-          Alle sensiblen Parameter (z.B. Private Keys oder Passwörter) der Prozedur oder Container Images müssen extern in einem "Key Management System" (siehe auch Punkt 14) spezifiziert werden. Es ist nicht erlaubt, diese im OCI Image zu speichern. Sie müssen beim Start des Containers herangezogen (z.B. Mount) werden. Technisch muss hierbei sichergestellt sein, dass selbst entwickelte oder eingekaufte Software mit Kubernetes Secrets arbeiten kann.
+          Sensible Parameter wie Private Keys oder Passwörter müssen extern in einem Key Management System gespeichert und beim Container-Start als Mount bereitgestellt werden. Die Software muss mit Kubernetes Secrets kompatibel sein und darf keine sensiblen Daten im OCI Image enthalten.
 
   # ######### #
   # Context 5 #
@@ -146,15 +146,15 @@ seed_examples:
       - question: |
           Welche Kubernetes-Berechtigungen erhalten Teams?
         answer: |
-          Die Applikation wird auf einem oder mehreren Kubernetes Namespaces isoliert ausgebracht. Das Applikationsteam bekommt nur (Project-)Administrationsrechte für die zugeteilten Namespaces. Sie erhalten keine clusterweiten Zugänge.
+          Applikationsteams erhalten nur Administrationsrechte für ihre zugeteilten Kubernetes Namespaces. Die Applikationen werden isoliert in diesen Namespaces bereitgestellt, clusterweite Zugänge werden nicht gewährt.
       - question: |
           Welche Health Probes sind erforderlich?
         answer: |
-          Jedes Container-Image der Applikation stellt eine Liveness-Probe (Applikationsprozess ist verfügbar) und eine Readiness-Probe (Applikationslogik funktioniert korrekt, Komponenten sind korrekt verbunden und externe Dienste sowie Datenbanken sind verfügbar) zur Verfügung. Die Probes sind im Kubernetes-Manifest konfiguriert.
+          Jedes Container-Image muss eine Liveness-Probe (prüft ob der Applikationsprozess verfügbar ist) und eine Readiness-Probe (prüft ob die Applikationslogik funktioniert und externe Dienste erreichbar sind) bereitstellen. Diese müssen im Kubernetes-Manifest konfiguriert werden.
       - question: |
           Wie wird Hochverfügbarkeit sichergestellt?
         answer: |
-          Die Applikation ist so gestaltet, dass der Ausfall oder Neustart eines Pods toleriert wird. Für eine Bereitstellung mit Hochverfügbarkeit sind mindestens zwei laufende Pods notwendig, die auf demselben Container-Image basieren. Beide Pods müssen in zwei getrennten Verfügbarkeitszonen / Rechenzentren gestartet werden (siehe Punkt 26). Zur Ausgestaltung siehe z.B. How-To Hochverfügbare Microservices.
+          Applikationen müssen so gestaltet sein, dass sie den Ausfall oder Neustart einzelner Pods tolerieren. Für Hochverfügbarkeit sind mindestens zwei Pods erforderlich, die auf demselben Container-Image basieren und in getrennten Verfügbarkeitszonen oder Rechenzentren betrieben werden müssen.
 
   # ######### #
   # Context 6 #
@@ -173,15 +173,15 @@ seed_examples:
       - question: |
           Wo sollen Daten gespeichert werden?
         answer: |
-          Daten werden, soweit notwendig, in persistenten Volumes gespeichert. Im Container sollen keine Daten gespeichert werden, da diese nach Beendigung des Containers verloren gehen. Davon ausgenommen sind temporäre Daten, deren Verlust keinen Effekt auf die Applikationsfunktionalität hat.
+          Daten müssen in persistenten Volumes gespeichert werden, da Container-interne Daten nach der Beendigung des Containers verloren gehen. Ausgenommen sind nur temporäre Daten, deren Verlust die Applikationsfunktionalität nicht beeinträchtigt.
       - question: |
           Welche Anforderungen gelten für verschlüsselte Kommunikation?
         answer: |
-          Applikationen sind hinsichtlich ihrer Netzwerkverbindung so konfiguriert, dass sie mittels TLS ausschließlich verschlüsselt und zertifikatsbasierend miteinander kommunizieren.
+          Applikationen sollen ausschließlich verschlüsselt über TLS kommunizieren und zertifikatsbasierte Authentifizierung für alle Netzwerkverbindungen verwenden.
       - question: |
           Welche Kommunikationsanforderungen sind verpflichtend?
         answer: |
-          Applikationen sind so konfiguriert, dass sie ausschließlich authentisiert miteinander kommunizieren.
+          Alle Applikationen müssen authentifizierte Kommunikation verwenden - unverschlüsselte oder nicht-authentifizierte Verbindungen sind nicht zulässig.
 
   # ######### #
   # Context 7 #
@@ -379,15 +379,15 @@ seed_examples:
       - question: |
           Was bedeutet das VABI-Verantwortlichkeitsmodell?
         answer: |
-          V (Verantwortlich): Trägt die Gesamtverantwortung für die Aufgabe und deren Ergebnis. A (Ausführend): Führt die Aufgabe praktisch durch und arbeitet an der Umsetzung. B (Beratend): Stellt Expertise zur Verfügung und unterstützt beratend bei der Durchführung. I (Informiert): Wird über Fortschritt und Ergebnisse informiert, aber nicht aktiv eingebunden.
+          VABI definiert vier Rollen: Verantwortlich (trägt Gesamtverantwortung), Ausführend (führt Aufgaben praktisch durch), Beratend (stellt Expertise zur Verfügung) und Informiert (wird über Fortschritt informiert, aber nicht aktiv eingebunden).
       - question: |
           Was umfasst die Definition des Verfahrensnamens?
         answer: |
-          Definition und Abstimmung des offiziellen Verfahrensnamens für das Onboarding-Projekt zwischen allen Beteiligten
+          Im ersten Schritt muss der offizielle Verfahrensname für das Onboarding-Projekt zwischen allen beteiligten Parteien definiert und abgestimmt werden.
       - question: |
           Was beinhaltet die Applikationsteam Organisation?
         answer: |
-          Identifikation der Teamstruktur, Definition von Rollen und Benennung der Ansprechpartner für das Projekt
+          Die Teamstruktur muss identifiziert, Rollen definiert und konkrete Ansprechpartner für das Projekt benannt werden.
 
   # ######### #
   # Context 14 #
@@ -415,15 +415,15 @@ seed_examples:
       - question: |
           Was umfasst die Confluence-Erstellung?
         answer: |
-          Erstellung der Confluence-Projektseite mit Dokumentationsstruktur und Zugriffsberechtigungen
+          Es muss eine Confluence-Projektseite mit strukturierter Dokumentation erstellt und entsprechende Zugriffsberechtigungen für das Team konfiguriert werden.
       - question: |
           Was beinhaltet die Workloadbeschreibung?
         answer: |
-          Detaillierte technische und fachliche Beschreibung der geplanten Container-Workloads und Anwendungsarchitektur
+          Eine detaillierte technische und fachliche Beschreibung der geplanten Container-Workloads und der zugrundeliegenden Anwendungsarchitektur muss erstellt werden.
       - question: |
           Was umfasst das Betriebskonzept?
         answer: |
-          Entwicklung des Betriebskonzepts inkl. SLA-Definition, Monitoring-Anforderungen und Eskalationsprozesse
+          Das Betriebskonzept muss SLA-Definitionen, Monitoring-Anforderungen und klar definierte Eskalationsprozesse enthalten.
 
   # ######### #
   # Context 15 #
@@ -488,15 +488,15 @@ seed_examples:
       - question: |
           Was umfasst die RBAC / AD Integration?
         answer: |
-          Einrichtung der Benutzerauthentifizierung, Gruppenmapping und Integration mit Active Directory-Services
+          Die Integration umfasst die Einrichtung der Benutzerauthentifizierung, das Mapping von Benutzergruppen und die technische Integration mit den Active Directory-Services.
       - question: |
           Wie werden Namespaces konfiguriert?
         answer: |
-          Erstellung und Konfiguration der Kubernetes-Namespaces entsprechend der Umgebungsstrategie (dev/test/prod)
+          Kubernetes-Namespaces werden entsprechend der Umgebungsstrategie erstellt und konfiguriert, typischerweise für Entwicklung (dev), Test und Produktion (prod).
       - question: |
           Welche Projektphasen gibt es im Onboarding-Prozess?
         answer: |
-          1. Organisationsphase (Woche 1-2): Projektsetup und Teamorganisation 2. Planungsphase (Woche 3-4): Ressourcen- und Netzwerkplanung 3. Konfigurationsphase (Woche 5-6): Technische Implementierung 4. Umsetzungsphase (Woche 7-8): Deployment und Integrationstests 5. Go-Live (Woche 9): Produktivschaltung und Übergabe an den Betrieb
+          Der Onboarding-Prozess umfasst fünf Phasen über neun Wochen: Organisationsphase (Woche 1-2) für Projektsetup, Planungsphase (Woche 3-4) für Ressourcenplanung, Konfigurationsphase (Woche 5-6) für technische Implementierung, Umsetzungsphase (Woche 7-8) für Deployment und Tests, sowie Go-Live (Woche 9) für Produktivschaltung.
 
   # ######### #
   # Context 17 #
@@ -528,15 +528,15 @@ seed_examples:
       - question: |
           Wie funktionieren die Eskalationspfade?
         answer: |
-          Bei Problemen oder Verzögerungen erfolgt die Eskalation über: 1. Technische Eskalation: Plattform-Team → Infrastructure-Team → IT-Operations-Manager 2. Fachliche Eskalation: Applikationsteam → Projekt-Sponsor → Business-Owner 3. Projekt-Eskalation: Projekt-Koordination → IT-Portfolio-Management
+          Es gibt drei Eskalationswege: Technische Probleme werden vom Plattform-Team über das Infrastructure-Team zum IT-Operations-Manager eskaliert. Fachliche Probleme gehen vom Applikationsteam über den Projekt-Sponsor zum Business-Owner. Projekt-Eskalationen laufen von der Projekt-Koordination zum IT-Portfolio-Management.
       - question: |
           Welche Kontaktmöglichkeiten gibt es für Support?
         answer: |
-          Plattform-Team: plattform-support@icp-company.de, Projekt-Koordination: plattform-onboarding@icp-company.de, 24/7 Support: plattform-support@icp-company.de
+          Für Support stehen drei zentrale E-Mail-Adressen zur Verfügung: das Plattform-Team unter plattform-support@icp-company.de, die Projekt-Koordination unter plattform-onboarding@icp-company.de und 24/7 Support ebenfalls unter plattform-support@icp-company.de.
       - question: |
           Welche externen Abteilungen sind am Onboarding-Prozess beteiligt?
         answer: |
-          IT-Service-Desk: Bereitstellung von IT-Basisservices wie E-Mail-Systeme, Datenschutzbeauftragte: Bewertung und Freigabe datenschutzrechtlicher Aspekte, Netzwerk-Security-Team: Firewall-Management und Netzwerk-Sicherheitsrichtlinien, Enterprise-Architecture: Architektur-Governance und Schnittstellenstandards, Identity-Management-Team: Active Directory und Benutzer-/Gruppenverwaltung, Infrastructure-Team: Hardware-Bereitstellung und Rechenzentrumsinfrastruktur
+          Sechs externe Abteilungen sind beteiligt: IT-Service-Desk für IT-Basisservices, Datenschutzbeauftragte für rechtliche Aspekte, Netzwerk-Security-Team für Firewall-Management, Enterprise-Architecture für Architektur-Governance, Identity-Management-Team für Active Directory und Infrastructure-Team für Hardware-Bereitstellung.
 
 document:
   repo: "https://github.com/mamurak/rhoai_sc_q2_taxonomy.git"
