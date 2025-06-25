@@ -54,20 +54,10 @@ cpk.quay.asg.net/plattform-base-images/<repo>
 - cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21
 - cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-21-runtime
 
-### OpenJDK 17 (LTS) - UBI 8:
-
-- cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-17
-- cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-17-runtime
-
 ### OpenJDK 17 (LTS) - UBI 9:
 
 - cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17
 - cpk.quay.asg.net/plattform-base-images/ubi9/openjdk-17-runtime
-
-### OpenJDK 11 (LTS) - UBI 8:
-
-- cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-11
-- cpk.quay.asg.net/plattform-base-images/ubi8/openjdk-11-runtime
 
 ## Python Runtime Images
 
