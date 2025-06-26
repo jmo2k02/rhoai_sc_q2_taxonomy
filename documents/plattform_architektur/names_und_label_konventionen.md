@@ -14,19 +14,19 @@ Diese Seite definiert die verbindlichen Namenskonventionen für die Interne Cont
 ### 1.2 Umgebungs-Suffixe
 | Umgebung | Suffix | Beschreibung | Beispiel |
 |----------|--------|--------------|----------|
-| Entwicklung | `dev` | Entwicklungsumgebung | `myapp-dev` |
-| Qualitätssicherung | `qs` | Test- und QS-Umgebung | `myapp-qs` |
-| Integration | `int` | Integrationsumgebung | `myapp-int` |
-| Produktion | `prod` | Produktionsumgebung | `myapp-prod` |
+| Entwicklung | `dev` | Entwicklungsumgebung | `ref416-oracle-dev` |
+| Qualitätssicherung | `qs` | Test- und QS-Umgebung | `ref416-oracle-qs` |
+| Integration | `int` | Integrationsumgebung | `ref416-oracle-int` |
+| Produktion | `prod` | Produktionsumgebung | `ref416-oracle-prod` |
 
 ### 1.3 Namespace-Beispiele
 ```bash
 # Gültige Namespace-Namen
-ecommerce-dev
-ecommerce-qs  
-ecommerce-prod
-finance-api-dev
-finance-api-prod
+ref416-shop-dev
+ref416-shop-qs  
+ref416-shop-prod
+fin-api-dev
+fin-api-prod
 crm-backend-int
 ```
 
@@ -48,9 +48,9 @@ cpk.quay.asg.net/<app-team-name>-<umgebung>/<repo>:<tag>
 #### Entwicklungsumgebung
 ```bash
 # Erlaubt - automatische Updates
-cpk.quay.asg.net/myapp-dev/backend:latest
-cpk.quay.asg.net/myapp-dev/frontend:main
-cpk.quay.asg.net/myapp-dev/api:develop
+cpk.quay.asg.net/ref416-oracle-dev/backend:latest
+cpk.quay.asg.net/ref416-oracle-dev/frontend:main
+cpk.quay.asg.net/ref416-oracle-dev/api:develop
 ```
 
 #### QS/Integration/Produktion (MUSS-Anforderung)

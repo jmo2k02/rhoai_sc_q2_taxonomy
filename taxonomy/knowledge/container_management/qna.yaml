@@ -381,7 +381,7 @@ seed_examples:
             - Dafür liegt im Cluster eine ClusterTask namens "save-pipeline-logs" bereit.
             - Diese muss in die Container Build Pipeline integriert werden um die Logs zu persistieren.
       - question: |
-          An welcher Stelle müssen die Labels hinzugefügt werden.
+          An welcher Stelle müssen die Labels zu einem Container hinzugefügt werden?
         answer: |
           Die Labels müssen innerhalb des Containerfiles angegeben werden.
           Benutze dafür einfach die Anweisung `LABEL` im Containerfile.

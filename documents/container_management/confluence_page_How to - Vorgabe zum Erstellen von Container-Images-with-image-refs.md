@@ -42,11 +42,9 @@ org.opencontainers.image.version="1.0.0"
 | -------                                   | -------------                       | ----------               |
 | org.opencontainers.image.created | Erstellungsdatum im ISO-8601 Format | 2023-05-15T09 : 00 : 00Z |
 | org.opencontainers.image.vendor  | Name des Unternehmens               | Meine Firma GmbH      |
-
 | org.opencontainers.image.authors         | Kontaktinformationen                           | team@meinefirma.de                            |
-|---------------------------------------------------|----------------------------------------------------|-----------------------------------------------------|
 | org.opencontainers.image.source          | URL zum Quellcode                                  | https://github.com/meinefirma/meine-app |
-| org.opencontainers.image.revision     | Gt-Commit-Hash oder andere Revisionsnummer | a1b2c3d4e5f6                                        |
+| org.opencontainers.image.revision     | Git-Commit-Hash oder andere Revisionsnummer | a1b2c3d4e5f6                                        |
 | org.opencontainers.image.title          | Name der Anwendung                                 | Meine Anwendung                                    |
 | org.opencontainers.image.description | Kurze Beschreibung                               | Beschreibung meiner Anwendung                    |
 | org.opencontainers.image.version        | Semantische Versionsnummer                     | 1.0.0                                           |
