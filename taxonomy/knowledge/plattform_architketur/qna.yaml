@@ -3,8 +3,7 @@ version: 1
 domain: Plattform Architektur
 created_by: jm02k02
 document_outline: |
-  Informationen zum Handhaben von Container Images und Helm Charts auf der
-   unternehmensinternen Containerplattform.
+  Sach- und Planungs-Informationen über die Architektur der Internen Container Plattform (ICP).
 seed_examples:
   #############
   # Context 1 #
