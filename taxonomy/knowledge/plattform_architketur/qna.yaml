@@ -233,15 +233,83 @@ seed_examples:
   - context: |
       ## Zuständigkeitsmatrix der Toollandschaft
 
-      | Tool | Aufgabe | Beschreibung | Zuständige Abteilung | Technisch | Betrieblich | Plattform-Empfehlung | Risiko | Kommentar |
-      |------|---------|--------------|---------------------|-----------|-------------|---------------------|---------|-----------|
-      | **Red Hat OpenShift** | Container-Orchestrierung | Kubernetes-basierte Container-Plattform als Basis für ICP | ICP-Team | ICP-Team | ICP-Team | Empfohlen | Niedrig | Kern der ICP-Plattform |
-      | **Red Hat Quay (CPK)** | Container Registry | Zentrale Registry für Container-Images unter cpk.quay.asg.net | ICP-Team | ICP-Team | ICP-Team | Verpflichtend | Niedrig | Team-spezifische Organisationen |
-      | **Argo CD** | GitOps Deployment | Kontinuierliche Bereitstellung über GitOps-Prinzipien | ICP-Team | ICP-Team | DevOps-Team | Empfohlen | Niedrig | Integration in ICP-Workflows |
-      | **Argo Workflows** | Workflow-Orchestrierung | Komplexe CI/CD-Pipelines und Batch-Processing | ICP-Team | ICP-Team | DevOps-Team | Empfohlen | Mittel | Für komplexe Workflows |
-      | **Tekton Pipelines** | CI/CD Pipelines | Native Kubernetes CI/CD mit ClusterTask "save-pipeline-logs" | ICP-Team | ICP-Team | ICP-Team | Empfohlen | Niedrig | Standard für Image-Builds |
-      | **Jenkins** | Legacy CI/CD | Bestehende Jenkins-Instanzen für Migration | DevOps-Team | External-ISV | DevOps-Team | Migration geplant | Hoch | Ablösung durch Tekton |
-      | **Helm 3** | Package Management | Kubernetes-Anwendungspaketierung (MUSS-Kriterium) | Applikationsteams | Applikationsteams | ICP-Team | Verpflichtend | Niedrig | Helm 2 nicht mehr unterstützt |
+      tools:
+        - tool: Red Hat OpenShift
+          aufgabe: Container-Orchestrierung
+          beschreibung: >
+            Kubernetes-basierte Container-Plattform als Basis für ICP
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Kern der ICP-Plattform
+
+        - tool: Red Hat Quay (CPK)
+          aufgabe: Container Registry
+          beschreibung: >
+            Zentrale Registry für Container-Images unter cpk.quay.asg.net
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Verpflichtend
+          risiko: Niedrig
+          kommentar: Team-spezifische Organisationen
+
+        - tool: Argo CD
+          aufgabe: GitOps Deployment
+          beschreibung: >
+            Kontinuierliche Bereitstellung über GitOps-Prinzipien
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Integration in ICP-Workflows
+
+        - tool: Argo Workflows
+          aufgabe: Workflow-Orchestrierung
+          beschreibung: >
+            Komplexe CI/CD-Pipelines und Batch-Processing
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Mittel
+          kommentar: Für komplexe Workflows
+
+        - tool: Tekton Pipelines
+          aufgabe: CI/CD Pipelines
+          beschreibung: >
+            Native Kubernetes CI/CD mit ClusterTask "save-pipeline-logs"
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Standard für Image-Builds
+
+        - tool: Jenkins
+          aufgabe: Legacy CI/CD
+          beschreibung: >
+            Bestehende Jenkins-Instanzen für Migration
+          abteilung: DevOps-Team
+          technisch: External-ISV
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Migration geplant
+          risiko: Hoch
+          kommentar: Ablösung durch Tekton
+
+        - tool: Helm 3
+          aufgabe: Package Management
+          beschreibung: >
+            Kubernetes-Anwendungspaketierung (MUSS-Kriterium)
+          abteilung: Applikationsteams
+          technisch: Applikationsteams
+          betrieblich: ICP-Team
+          plattform_empfehlung: Verpflichtend
+          risiko: Niedrig
+          kommentar: Helm 2 nicht mehr unterstützt
 
     questions_and_answers:
       - question: |
