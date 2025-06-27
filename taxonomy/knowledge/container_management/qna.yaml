@@ -657,7 +657,7 @@ seed_examples:
           In der deployment YAML Datei kann unter dem Pfad
            spec.containers.image das genaue Image spezifiziert werden.
 document:
-  repo: 'https://github.com/mamurak/rhoai_sc_q2_taxonomy.git'
+  repo: 'https://github.com/SherylGitCamp/rhoai_sc_q2_taxonomy.git'
   commit: 7afe7c77faea7f1c007e84477aba4d357d2e0752
   patterns:
     - 'documents/container_management/*.md'
