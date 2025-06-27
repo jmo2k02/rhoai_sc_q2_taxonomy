@@ -292,6 +292,6 @@ seed_examples:
               Kritikalität im Promotion Prozess wider
 document:
   repo: "https://github.com/mamurak/rhoai_sc_q2_taxonomy.git"
-  commit: fe5b6e4ca5f9939a22ffc8c5c9761ef6385416ec
+  commit: 7afe7c77faea7f1c007e84477aba4d357d2e0752
   patterns:
     - "documents/plattform_architektur/*.md"
