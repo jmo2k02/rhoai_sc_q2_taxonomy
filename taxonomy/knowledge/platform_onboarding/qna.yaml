@@ -1,9 +1,9 @@
 ---
-version: 1
+version: 3
 domain: Plattform Onboarding
 created_by: jm02k02
 document_outline: |
-  Akzeptanzkriterien und technische Anforderungen für Workloads auf der 
+  Akzeptanzkriterien und technische Anforderungen für Workloads auf der
   Internen Container-Plattform (ICP)
 seed_examples:
   # ######### #
@@ -342,9 +342,8 @@ seed_examples:
           Welche externen Abteilungen sind am Onboarding-Prozess beteiligt?
         answer: |
           Sechs externe Abteilungen sind beteiligt: IT-Service-Desk für IT-Basisservices, Datenschutzbeauftragte für rechtliche Aspekte, Netzwerk-Security-Team für Firewall-Management, Enterprise-Architecture für Architektur-Governance, Identity-Management-Team für Active Directory und Infrastructure-Team für Hardware-Bereitstellung.
-
 document:
-  repo: "https://github.com/mamurak/rhoai_sc_q2_taxonomy.git"
-  commit: de470252e56b5d593d9e5efde6a71977b09546f4
+  repo: "https://github.com/SherylGitCamp/rhoai_sc_q2_taxonomy.git"
+  commit: 7afe7c77faea7f1c007e84477aba4d357d2e0752
   patterns:
-    - "documents/*.md"
+    - "documents/platform_onboarding/*.md"

@@ -1,94 +1,143 @@
 ---
-version: 1
+version: 3
 domain: Plattform Architektur
 created_by: jm02k02
 document_outline: |
-  Sach- und Planungs-Informationen über die Architektur der Internen Container Plattform (ICP).
+  Sach- und Planungs-Informationen über die Architektur der Internen
+  Container Plattform (ICP).
 seed_examples:
   #############
   # Context 1 #
   #############
   - context: |
-      **Zone München (MUC)** fungiert als unser Hauptstandort und beherbergt den Großteil unserer kritischen 
-        Produktionsworkloads. Diese Zone umfasst sowohl traditionelle Unternehmensanwendungen als auch moderne 
-        Cloud-native Microservices-Architekturen. Der Schwerpunkt liegt auf hochverfügbaren Services mit stringenten 
-        SLA-Anforderungen. Aufgrund der zentralen Rolle als Haupt-Datacenter verzeichnet München kontinuierlich das stärkste
-        Wachstum bei allen Ressourcenkategorien. Besonders bemerkenswert ist die Zunahme bei GPU-Ressourcen, 
-        die durch den verstärkten Einsatz von Machine Learning und AI-Workloads getrieben wird.
+      **Zone München (MUC)** fungiert als unser Hauptstandort und
+      beherbergt den Großteil unserer kritischen
+        Produktionsworkloads. Diese Zone umfasst sowohl traditionelle
+        Unternehmensanwendungen als auch moderne
+        Cloud-native Microservices-Architekturen. Der Schwerpunkt liegt
+        auf hochverfügbaren Services mit stringenten
+        SLA-Anforderungen. Aufgrund der zentralen Rolle als
+        Haupt-Datacenter verzeichnet München kontinuierlich das stärkste
+        Wachstum bei allen Ressourcenkategorien. Besonders bemerkenswert
+        ist die Zunahme bei GPU-Ressourcen,
+        die durch den verstärkten Einsatz von Machine Learning und
+        AI-Workloads getrieben wird.
 
-      **Zone Frankfurt (FRA)** dient primär als Disaster Recovery Standort und Secondary Site für geschäftskritische 
-        Anwendungen. Diese Zone hat sich in den letzten Jahren von einer reinen Backup-Infrastruktur 
-        zu einem aktiven Produktionsstandort entwickelt, der sowohl DR-Szenarien als auch Load Balancing 
-        zwischen den Standorten unterstützt. Das Wachstum in Frankfurt spiegelt unsere Multi-Site-Strategie 
-        wider und zeigt eine konstante Steigerung der Kapazitätsanforderungen, insbesondere bei Storage für Datenreplikation 
+      **Zone Frankfurt (FRA)** dient primär als Disaster Recovery Standort
+      und Secondary Site für geschäftskritische
+        Anwendungen. Diese Zone hat sich in den letzten Jahren von einer
+        reinen Backup-Infrastruktur
+        zu einem aktiven Produktionsstandort entwickelt, der sowohl
+        DR-Szenarien als auch Load Balancing
+        zwischen den Standorten unterstützt. Das Wachstum in Frankfurt
+        spiegelt unsere Multi-Site-Strategie
+        wider und zeigt eine konstante Steigerung der Kapazitätsanforderungen,
+        insbesondere bei Storage für Datenreplikation
         und RAM für In-Memory-Caching-Lösungen.
-    
-      **Zone Hamburg (HAM)** fokussiert sich auf Development und Testing Workloads sowie auf weniger kritische Produktionsanwendungen. 
-        Diese Zone charakterisiert sich durch hohe Volatilität in der Ressourcennutzung, da Entwicklungs- und Testumgebungen häufig 
-        auf- und abgebaut werden. Das Wachstum ist geprägt von einem steigenden Bedarf an vCPU-Ressourcen für parallele Build-Prozesse 
-        und Container-Orchestrierung. Storage-Anforderungen wachsen durch die Notwendigkeit, verschiedene Versionsstände von Anwendungen 
+
+      **Zone Hamburg (HAM)** fokussiert sich auf Development und Testing
+      Workloads sowie auf weniger kritische Produktionsanwendungen.
+        Diese Zone charakterisiert sich durch hohe Volatilität in der
+        Ressourcennutzung, da Entwicklungs- und Testumgebungen häufig
+        auf- und abgebaut werden. Das Wachstum ist geprägt von einem
+        steigenden Bedarf an vCPU-Ressourcen für parallele Build-Prozesse
+        und Container-Orchestrierung. Storage-Anforderungen wachsen
+        durch die Notwendigkeit, verschiedene Versionsstände von Anwendungen
         und Testdaten vorzuhalten.
     questions_and_answers:
       - question: |
-          Welche Hauptfunktion erfüllt Zone München (MUC) und wodurch wird das GPU-Ressourcen-Wachstum getrieben?
+          Welche Hauptfunktion erfüllt Zone München (MUC) und wodurch
+          wird das GPU-Ressourcen-Wachstum getrieben?
         answer: |
-          Die Zone München (MUC) ist der Hauptstandort der Container Plattform und hat seinen Schwerpunkt auf hochverfügbaren Services mit stringenten SLA-Anforderungen.
-          Aufgrund von verstärktem Einsatz von ML und AI-Workloads, ist auch ein bemerkenswerter Wachstum bei GPU-Ressourcen zu verzeichnen.
+          Die Zone München (MUC) ist der Hauptstandort der Container
+          Plattform und hat seinen Schwerpunkt auf hochverfügbaren Services
+          mit stringenten SLA-Anforderungen.
+          Aufgrund von verstärktem Einsatz von ML und AI-Workloads,
+          ist auch ein bemerkenswerter Wachstum bei GPU-Ressourcen zu
+          verzeichnen.
       - question: |
-          Wie hat sich Zone Frankfurt (FRA) entwickelt und welche Ressourcen zeigen besonders starkes Wachstum?
+          Wie hat sich Zone Frankfurt (FRA) entwickelt und welche
+          Ressourcen zeigen besonders starkes Wachstum?
         answer: |
-          Die Zone Frankfurt (FRA) hat sich von einer reinen Backup-Infrastruktur zu einem aktiven Produktionsstandort entwickelt.
-          Dabei zeigen vor allem Storage für Datenreplikation und RAM für In-Memory-Caching-Lösungen eine konstante Steigerung.
+          Die Zone Frankfurt (FRA) hat sich von einer reinen
+          Backup-Infrastruktur
+          zu einem aktiven Produktionsstandort entwickelt.
+          Dabei zeigen vor allem Storage für Datenreplikation und RAM für
+          In-Memory-Caching-Lösungen eine konstante Steigerung.
       - question: |
-          Wodurch charakterisiert sich die Zone Hamburg (HAM) und warum steigen die vCPU-Anforderungen?
+          Wodurch charakterisiert sich die Zone Hamburg (HAM) und warum
+          steigen die vCPU-Anforderungen?
         answer: |
-          Die Zone Hamburg (HAM) charakterisiert sich durch hohe Volatilität in der Ressourcennutzung. 
-          Der Bedarf an vCPU-Ressourcen steigt aufgrund vermehrter paralleler Build-Prozesse und Container-Orchestrierung.
+          Die Zone Hamburg (HAM) charakterisiert sich durch hohe Volatilität
+          in der Ressourcennutzung.
+          Der Bedarf an vCPU-Ressourcen steigt aufgrund vermehrter paralleler
+          Build-Prozesse und Container-Orchestrierung.
   #############
   # Context 2 #
   #############
   - context: |
       ## Kapazitätsplanung und Strategische Ausrichtung
 
-      **Mittelfristige Prognose (2026-2027):** Basierend auf den aktuellen Trends erwarten wir eine Fortsetzung des Wachstums bei 
-        moderaten Raten. Für 2026 prognostizieren wir einen Gesamtbedarf von etwa 15.000 vCPU-Kernen, 280 GPU-Kernen, 60.000 GB RAM 
-        und 950 TB Storage. Die Wachstumsraten werden sich voraussichtlich bei etwa 18-20% stabilisieren, da die initiale Migrationswelle
-        von Legacy-Systemen abebbt.
+      **Mittelfristige Prognose (2026-2027):** Basierend auf den
+      aktuellen Trends erwarten wir eine Fortsetzung des Wachstums bei
+        moderaten Raten. Für 2026 prognostizieren wir einen
+        Gesamtbedarf von etwa 15.000 vCPU-Kernen, 280 GPU-Kernen,
+        60.000 GB RAM
+        und 950 TB Storage. Die Wachstumsraten werden sich
+        voraussichtlich bei etwa 18-20% stabilisieren, da die
+        initiale Migrationswelle von Legacy-Systemen abebbt.
 
-      **Investitionspriorisierung:** GPU-Kapazitäten erfordern die höchste Aufmerksamkeit aufgrund der starken Nachfrage, hohen Beschaffungskosten und Risiken von Lieferengpässen. 
-        Eine strategische Vorabinvestition in GPU-Ressourcen wird empfohlen, um Engpässe zu vermeiden. Storage-Wachstum erfordert kontinuierliche 
+      **Investitionspriorisierung:** GPU-Kapazitäten erfordern die
+      höchste Aufmerksamkeit aufgrund der starken Nachfrage, hohen
+      Beschaffungskosten und Risiken von Lieferengpässen.
+        Eine strategische Vorabinvestition in GPU-Ressourcen wird empfohlen,
+        um Engpässe zu vermeiden. Storage-Wachstum erfordert kontinuierliche
         Investitionen in Hochleistungsspeicher und Backup-Infrastruktur.
 
-      **Zonale Entwicklungsstrategie:** Berlin als Innovationsstandort wird überproportional wachsen und erfordert flexible Kapazitätsplanungen. 
-        München bleibt der Haupttreiber für absolute Kapazitätserweiterungen. Frankfurt entwickelt sich zu einem vollwertigen Produktionsstandort 
+      **Zonale Entwicklungsstrategie:** Berlin als Innovationsstandort
+      wird überproportional wachsen und erfordert flexible Kapazitätsplanungen.
+        München bleibt der Haupttreiber für absolute Kapazitätserweiterungen.
+        Frankfurt entwickelt sich zu einem vollwertigen Produktionsstandort
         und benötigt entsprechende Infrastrukturinvestitionen.
 
-      **Kostenoptimierung:** Durch die Implementierung von Cluster-Autoscaling und ressourcenbasierter Abrechnung können Effizienzgewinne von
-        15-20% realisiert werden. Die Einführung von Spot-Instances für nicht-kritische Workloads kann weitere Kosteneinsparungen ermöglichen.
+      **Kostenoptimierung:** Durch die Implementierung von Cluster-Autoscaling
+      und ressourcenbasierter Abrechnung können Effizienzgewinne von
+        15-20% realisiert werden. Die Einführung von Spot-Instances für
+        nicht-kritische Workloads kann weitere Kosteneinsparungen ermöglichen.
       ## Empfehlungen und Nächste Schritte
 
-      Die Kapazitätsplanung sollte quartalsweise überprüft und angepasst werden, um auf sich ändernde Geschäftsanforderungen reagieren zu 
-        können. Die Implementierung von Monitoring-Tools für Ressourcennutzung und Predictive Analytics wird empfohlen, um die Planungsgenauigkeit 
+      Die Kapazitätsplanung sollte quartalsweise überprüft und angepasst
+      werden, um auf sich ändernde Geschäftsanforderungen reagieren zu
+        können. Die Implementierung von Monitoring-Tools für
+        Ressourcennutzung und Predictive Analytics wird empfohlen,
+        um die Planungsgenauigkeit
         zu verbessern.
 
-      Eine strategische Partnerschaft mit Hardware-Anbietern für GPU-Kapazitäten sollte etabliert werden, um Lieferengpässe zu vermeiden. 
-        Die Evaluierung von Hybrid-Cloud-Szenarien für Spitzenlasten kann die Kapazitätsflexibilität erhöhen, ohne die Grundinvestition zu erhöhen.
+      Eine strategische Partnerschaft mit Hardware-Anbietern für GPU-Kapazitäten
+      sollte etabliert werden, um Lieferengpässe zu vermeiden.
+        Die Evaluierung von Hybrid-Cloud-Szenarien für Spitzenlasten kann
+        die Kapazitätsflexibilität erhöhen, ohne die Grundinvestition zu
+        erhöhen.
 
-      
+
     questions_and_answers:
       - question: |
           Welche Kapazitätsprognose wird für 2026 erwartet?
         answer: |
-          Für 2026 wird ein Gesamtbedarf von etwa 15.000 vCPU-Kernen, 280 GPU-Kernen, 60.000 GB RAM und 950 TB Storage prognostiziert.
+          Für 2026 wird ein Gesamtbedarf von etwa 15.000 vCPU-Kernen,
+          280 GPU-Kernen, 60.000 GB RAM und 950 TB Storage prognostiziert.
       - question: |
           Warum erfordern GPU-Kapazitäten die höchste Investitionspriorität?
         answer: |
-          GPU-Kapazitäten erfordern die höchste Aufmerksamkeit aufgrund der starken Nachfrage, hohen Beschaffungskosten und Risiken von Lieferengpässen.
+          GPU-Kapazitäten erfordern die höchste Aufmerksamkeit aufgrund
+          der starken Nachfrage, hohen Beschaffungskosten und Risiken von
+          Lieferengpässen.
       - question: |
           Welche Kostenoptimierungen sind möglich?
         answer: |
-          Mögliche Kostenoptimierungen, wären die Implementierung von Cluster-Autoscaling und ressourcenbasierter Abrechnung, wodurch Effizienzgewinne von
-            15-20% realisiert werden könnten.
+          Mögliche Kostenoptimierungen, wären die Implementierung von
+          Cluster-Autoscaling und ressourcenbasierter Abrechnung,
+          wodurch Effizienzgewinne von 15-20% realisiert werden könnten.
   #############
   # Context 3 #
   #############
@@ -110,7 +159,7 @@ seed_examples:
       ```bash
       # Gültige Namespace-Namen
       ref416-shop-dev
-      ref416-shop-qs  
+      ref416-shop-qs
       ref416-shop-prod
       fin-api-dev
       fin-api-prod
@@ -140,7 +189,7 @@ seed_examples:
       cpk.quay.asg.net/ref416-oracle-dev/api:develop
       ```
 
-      
+
     questions_and_answers:
       - question: |
           Wie lautet das Standard-Namensschema für Kubernetes Namespaces?
@@ -154,7 +203,8 @@ seed_examples:
           |----------|--------|--------------|----------|
           | Entwicklung | `dev` | Entwicklungsumgebung | `ref416-oracle-dev` |
       - question: |
-          Welche verschiedenen Umgebungen gibt es und welches Suffix haben sie jeweils?
+          Welche verschiedenen Umgebungen gibt es und welches
+          Suffix haben sie jeweils?
         answer: |
           Es gibt 4 verschiedene Umgebungen.
             - Entwicklungsumgebung, Suffix = `dev`
@@ -169,10 +219,13 @@ seed_examples:
           cpk.quay.asg.net/<app-team-name>-<umgebung>/<repo>:<tag>
           ```
           Komponenten des Schemas:
-            - cpk.quay.asg.net - Die Basis-URL der unternehmensinternen Quay Registry
-            - <app-team-name>-<umgebung> - Die Organisation, bestehend aus der Team-ID und der Umgebung (z.B. ref416-oracle-dev)
+            - cpk.quay.asg.net - Die Basis-URL der unternehmensinternen
+            Quay Registry
+            - <app-team-name>-<umgebung> - Die Organisation, bestehend
+            aus der Team-ID und der Umgebung (z.B. ref416-oracle-dev)
             - <repo> - Der Repository-Name (z.B. backend, frontend, api)
-            - <tag> - Der Image-Tag (z.B. latest, main, develop oder Versionsnummern)
+            - <tag> - Der Image-Tag (z.B. latest, main, develop oder
+            Versionsnummern)
 
   #############
   # Context 4 #
@@ -180,31 +233,104 @@ seed_examples:
   - context: |
       ## Zuständigkeitsmatrix der Toollandschaft
 
-      | Tool | Aufgabe | Beschreibung | Zuständige Abteilung | Technisch | Betrieblich | Plattform-Empfehlung | Risiko | Kommentar |
-      |------|---------|--------------|---------------------|-----------|-------------|---------------------|---------|-----------|
-      | **Red Hat OpenShift** | Container-Orchestrierung | Kubernetes-basierte Container-Plattform als Basis für ICP | ICP-Team | ICP-Team | ICP-Team | Empfohlen | Niedrig | Kern der ICP-Plattform |
-      | **Red Hat Quay (CPK)** | Container Registry | Zentrale Registry für Container-Images unter cpk.quay.asg.net | ICP-Team | ICP-Team | ICP-Team | Verpflichtend | Niedrig | Team-spezifische Organisationen |
-      | **Argo CD** | GitOps Deployment | Kontinuierliche Bereitstellung über GitOps-Prinzipien | ICP-Team | ICP-Team | DevOps-Team | Empfohlen | Niedrig | Integration in ICP-Workflows |
-      | **Argo Workflows** | Workflow-Orchestrierung | Komplexe CI/CD-Pipelines und Batch-Processing | ICP-Team | ICP-Team | DevOps-Team | Empfohlen | Mittel | Für komplexe Workflows |
-      | **Tekton Pipelines** | CI/CD Pipelines | Native Kubernetes CI/CD mit ClusterTask "save-pipeline-logs" | ICP-Team | ICP-Team | ICP-Team | Empfohlen | Niedrig | Standard für Image-Builds |
-      | **Jenkins** | Legacy CI/CD | Bestehende Jenkins-Instanzen für Migration | DevOps-Team | External-ISV | DevOps-Team | Migration geplant | Hoch | Ablösung durch Tekton |
-      | **Helm 3** | Package Management | Kubernetes-Anwendungspaketierung (MUSS-Kriterium) | Applikationsteams | Applikationsteams | ICP-Team | Verpflichtend | Niedrig | Helm 2 nicht mehr unterstützt |
-     
+      tools:
+        - tool: Red Hat OpenShift
+          aufgabe: Container-Orchestrierung
+          beschreibung: >
+            Kubernetes-basierte Container-Plattform als Basis für ICP
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Kern der ICP-Plattform
+
+        - tool: Red Hat Quay (CPK)
+          aufgabe: Container Registry
+          beschreibung: >
+            Zentrale Registry für Container-Images unter cpk.quay.asg.net
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Verpflichtend
+          risiko: Niedrig
+          kommentar: Team-spezifische Organisationen
+
+        - tool: Argo CD
+          aufgabe: GitOps Deployment
+          beschreibung: >
+            Kontinuierliche Bereitstellung über GitOps-Prinzipien
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Integration in ICP-Workflows
+
+        - tool: Argo Workflows
+          aufgabe: Workflow-Orchestrierung
+          beschreibung: >
+            Komplexe CI/CD-Pipelines und Batch-Processing
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Mittel
+          kommentar: Für komplexe Workflows
+
+        - tool: Tekton Pipelines
+          aufgabe: CI/CD Pipelines
+          beschreibung: >
+            Native Kubernetes CI/CD mit ClusterTask "save-pipeline-logs"
+          abteilung: ICP-Team
+          technisch: ICP-Team
+          betrieblich: ICP-Team
+          plattform_empfehlung: Empfohlen
+          risiko: Niedrig
+          kommentar: Standard für Image-Builds
+
+        - tool: Jenkins
+          aufgabe: Legacy CI/CD
+          beschreibung: >
+            Bestehende Jenkins-Instanzen für Migration
+          abteilung: DevOps-Team
+          technisch: External-ISV
+          betrieblich: DevOps-Team
+          plattform_empfehlung: Migration geplant
+          risiko: Hoch
+          kommentar: Ablösung durch Tekton
+
+        - tool: Helm 3
+          aufgabe: Package Management
+          beschreibung: >
+            Kubernetes-Anwendungspaketierung (MUSS-Kriterium)
+          abteilung: Applikationsteams
+          technisch: Applikationsteams
+          betrieblich: ICP-Team
+          plattform_empfehlung: Verpflichtend
+          risiko: Niedrig
+          kommentar: Helm 2 nicht mehr unterstützt
+
     questions_and_answers:
       - question: |
-          Welche Rolle spielt Red Hat OpenShift in der ICP-Toollandschaft und wer ist dafür zuständig?
+          Welche Rolle spielt Red Hat OpenShift in der ICP-Toollandschaft und
+          wer ist dafür zuständig?
         answer: |
-          RedHat OpenShift ist eine Kubernetes-basierte Container-Plattform und dient als Basis für die ICP.
+          RedHat OpenShift ist eine Kubernetes-basierte Container-Plattform und
+          dient als Basis für die ICP.
           Das ICP Team hat die volle Verantowrtung für RedHat OpenShift.
       - question: |
           Welches Legacy-System wird durch Tekton abgelöst?
         answer: |
-          Das Jenkins System soll durch Tekton Pipelines ersetzt werden. Der Prozess ist aktuell noch in der Migration.
+          Das Jenkins System soll durch Tekton Pipelines ersetzt werden. Der
+          Prozess ist aktuell noch in der Migration.
       - question: |
-          Warum ist Helm 3 verpflichtend und welche Plattform-Empfehlung hat Red Hat Quay (CPK)?
+          Warum ist Helm 3 verpflichtend und welche Plattform-Empfehlung hat
+          Red Hat Quay (CPK)?
         answer: |
-          Helm3 ist verpflichtend, weil die Unterstützung von Helm2 beendet wurde. 
-          RedHat Quay hat eine verpflichtende Empfehlung als Standard Container Registry.
+          Helm3 ist verpflichtend, weil die Unterstützung von Helm2 beendet
+          wurde. RedHat Quay hat eine verpflichtende Empfehlung als Standard
+          Container Registry.
   #############
   # Context 5 #
   #############
@@ -225,7 +351,8 @@ seed_examples:
       **Verantwortlichkeit:** Entwicklungsteams
 
       **Prozess:**
-      1. Entwickler erstellt Dockerfile basierend auf approved Base/Runtime Images
+      1. Entwickler erstellt Dockerfile basierend auf approved
+      Base/Runtime Images
       2. Lokaler Build und Tests
       3. Push zu Development Registry
       4. Automatische Bereitstellung in Development Namespace
@@ -269,24 +396,38 @@ seed_examples:
       - Smoke Tests bestanden
       - Rollback Plan dokumentiert
 
-      
+
     questions_and_answers:
       - question: |
-          Wie sieht die vierstufige Image Promotion Pipeline aus und welche Namespaces werden durchlaufen?
+          Wie sieht die vierstufige Image Promotion Pipeline aus und
+          welche Namespaces werden durchlaufen?
         answer: |
-          Die Stufen Entwicklung, Staging, Pre-Production, Production werden von Links nach Rechts durchlaufen.
-          Die dazugehörigen namespaces sind der dev-ns, staging-ns, preprod-ns und prod-ns.
+          Die Stufen Entwicklung, Staging, Pre-Production, Production
+          werden von Links nach Rechts durchlaufen.
+          Die dazugehörigen namespaces sind der dev-ns, staging-ns,
+          preprod-ns und prod-ns.
       - question: |
-          Welche Gating-Kriterien müssen in der Development-Phase erfüllt werden und wer ist dafür verantwortlich?
+          Welche Gating-Kriterien müssen in der Development-Phase erfüllt
+          werden und wer ist dafür verantwortlich?
         answer: |
-          Um all Gating-Kriterien zu erfüllen, muss der Build Prozess erfolgreich abgeschlossen werden, alle Unit-Tests bestanden werden
+          Um all Gating-Kriterien zu erfüllen, muss der Build Prozess
+          erfolgreich abgeschlossen werden, alle Unit-Tests bestanden werden
             und alle Code Quality Gates erfüllt sein.
           Dafür ist immer das jeweilige Entwicklungsteam verantwortlich.
       - question: |
-          Was sind die Kernunterschiede zwischen Staging und Pre-Production Phase bezüglich Verantwortlichkeit und Gating-Kriterien?
+          Was sind die Kernunterschiede zwischen Staging und Pre-Production
+          Phase bezüglich Verantwortlichkeit und Gating-Kriterien?
         answer: |
           Die Kernunterschiede sind:
-            - Staging konzentriert sich auf technische Qualitätssicherung (Sicherheit, Tests, Performance)
-            - Pre-Production ist fokussiert auf organisatorische Freigabe-Prozesse (Genehmigungen, Dokumentation, Rollback-Planung)
-            - Der Übergang von automatisiert (Staging) zu manuell kontrolliert (Pre-Production) spiegelt die zunehmende 
-              Kritikalität im Promotion Prozess wider
+            - Staging konzentriert sich auf technische Qualitätssicherung
+            (Sicherheit, Tests, Performance)
+            - Pre-Production ist fokussiert auf organisatorische
+            Freigabe-Prozesse (Genehmigungen, Dokumentation, Rollback-Planung)
+            - Der Übergang von automatisiert (Staging) zu manuell kontrolliert
+            (Pre-Production) spiegelt die zunehmende
+            Kritikalität im Promotion Prozess wider
+document:
+  repo: "https://github.com/SherylGitCamp/rhoai_sc_q2_taxonomy.git"
+  commit: 7afe7c77faea7f1c007e84477aba4d357d2e0752
+  patterns:
+    - "documents/plattform_architektur/*.md"
