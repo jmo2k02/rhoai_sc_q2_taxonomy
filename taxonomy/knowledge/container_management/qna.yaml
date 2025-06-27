@@ -165,12 +165,12 @@ seed_examples:
   - context: |
       3. Verfügbare Basis-Images
 
-      Alle folgenden Images sind im Cluster frei und ohne Einschränkungen verfügbar. 
-      Sie können für das Erstellen von Containern genutzt werden. 
+      Alle folgenden Images sind im Cluster frei und ohne Einschränkungen verfügbar.
+      Sie können für das Erstellen von Containern genutzt werden.
 
-      Viele der offiziellen und subskriptionsfreien RedHat Universal Build Images (UBI) sind auf der Plattform verfügbar. 
+      Viele der offiziellen und subskriptionsfreien RedHat Universal Build Images (UBI) sind auf der Plattform verfügbar.
       Diese Images sind in der Quay-Organisation `plattform-base-images` unter folgender URL erhältlich:
-      
+
       `cpk.quay.asg.net/plattform-base-images/<repo>`
 
       OpenJDK Runtime Images
@@ -658,6 +658,6 @@ seed_examples:
            spec.containers.image das genaue Image spezifiziert werden.
 document:
   repo: 'https://github.com/mamurak/rhoai_sc_q2_taxonomy.git'
-  commit: de470252e56b5d593d9e5efde6a71977b09546f4
+  commit: fe5b6e4ca5f9939a22ffc8c5c9761ef6385416ec
   patterns:
-    - 'documents/*.md'
+    - 'documents/container_management/*.md'

@@ -1,5 +1,5 @@
 ---
-version: 1
+version: 3
 domain: Plattform Architektur
 created_by: jm02k02
 document_outline: |
@@ -9,24 +9,24 @@ seed_examples:
   # Context 1 #
   #############
   - context: |
-      **Zone München (MUC)** fungiert als unser Hauptstandort und beherbergt den Großteil unserer kritischen 
-        Produktionsworkloads. Diese Zone umfasst sowohl traditionelle Unternehmensanwendungen als auch moderne 
-        Cloud-native Microservices-Architekturen. Der Schwerpunkt liegt auf hochverfügbaren Services mit stringenten 
+      **Zone München (MUC)** fungiert als unser Hauptstandort und beherbergt den Großteil unserer kritischen
+        Produktionsworkloads. Diese Zone umfasst sowohl traditionelle Unternehmensanwendungen als auch moderne
+        Cloud-native Microservices-Architekturen. Der Schwerpunkt liegt auf hochverfügbaren Services mit stringenten
         SLA-Anforderungen. Aufgrund der zentralen Rolle als Haupt-Datacenter verzeichnet München kontinuierlich das stärkste
-        Wachstum bei allen Ressourcenkategorien. Besonders bemerkenswert ist die Zunahme bei GPU-Ressourcen, 
+        Wachstum bei allen Ressourcenkategorien. Besonders bemerkenswert ist die Zunahme bei GPU-Ressourcen,
         die durch den verstärkten Einsatz von Machine Learning und AI-Workloads getrieben wird.
 
-      **Zone Frankfurt (FRA)** dient primär als Disaster Recovery Standort und Secondary Site für geschäftskritische 
-        Anwendungen. Diese Zone hat sich in den letzten Jahren von einer reinen Backup-Infrastruktur 
-        zu einem aktiven Produktionsstandort entwickelt, der sowohl DR-Szenarien als auch Load Balancing 
-        zwischen den Standorten unterstützt. Das Wachstum in Frankfurt spiegelt unsere Multi-Site-Strategie 
-        wider und zeigt eine konstante Steigerung der Kapazitätsanforderungen, insbesondere bei Storage für Datenreplikation 
+      **Zone Frankfurt (FRA)** dient primär als Disaster Recovery Standort und Secondary Site für geschäftskritische
+        Anwendungen. Diese Zone hat sich in den letzten Jahren von einer reinen Backup-Infrastruktur
+        zu einem aktiven Produktionsstandort entwickelt, der sowohl DR-Szenarien als auch Load Balancing
+        zwischen den Standorten unterstützt. Das Wachstum in Frankfurt spiegelt unsere Multi-Site-Strategie
+        wider und zeigt eine konstante Steigerung der Kapazitätsanforderungen, insbesondere bei Storage für Datenreplikation
         und RAM für In-Memory-Caching-Lösungen.
-    
-      **Zone Hamburg (HAM)** fokussiert sich auf Development und Testing Workloads sowie auf weniger kritische Produktionsanwendungen. 
-        Diese Zone charakterisiert sich durch hohe Volatilität in der Ressourcennutzung, da Entwicklungs- und Testumgebungen häufig 
-        auf- und abgebaut werden. Das Wachstum ist geprägt von einem steigenden Bedarf an vCPU-Ressourcen für parallele Build-Prozesse 
-        und Container-Orchestrierung. Storage-Anforderungen wachsen durch die Notwendigkeit, verschiedene Versionsstände von Anwendungen 
+
+      **Zone Hamburg (HAM)** fokussiert sich auf Development und Testing Workloads sowie auf weniger kritische Produktionsanwendungen.
+        Diese Zone charakterisiert sich durch hohe Volatilität in der Ressourcennutzung, da Entwicklungs- und Testumgebungen häufig
+        auf- und abgebaut werden. Das Wachstum ist geprägt von einem steigenden Bedarf an vCPU-Ressourcen für parallele Build-Prozesse
+        und Container-Orchestrierung. Storage-Anforderungen wachsen durch die Notwendigkeit, verschiedene Versionsstände von Anwendungen
         und Testdaten vorzuhalten.
     questions_and_answers:
       - question: |
@@ -42,7 +42,7 @@ seed_examples:
       - question: |
           Wodurch charakterisiert sich die Zone Hamburg (HAM) und warum steigen die vCPU-Anforderungen?
         answer: |
-          Die Zone Hamburg (HAM) charakterisiert sich durch hohe Volatilität in der Ressourcennutzung. 
+          Die Zone Hamburg (HAM) charakterisiert sich durch hohe Volatilität in der Ressourcennutzung.
           Der Bedarf an vCPU-Ressourcen steigt aufgrund vermehrter paralleler Build-Prozesse und Container-Orchestrierung.
   #############
   # Context 2 #
@@ -50,31 +50,31 @@ seed_examples:
   - context: |
       ## Kapazitätsplanung und Strategische Ausrichtung
 
-      **Mittelfristige Prognose (2026-2027):** Basierend auf den aktuellen Trends erwarten wir eine Fortsetzung des Wachstums bei 
-        moderaten Raten. Für 2026 prognostizieren wir einen Gesamtbedarf von etwa 15.000 vCPU-Kernen, 280 GPU-Kernen, 60.000 GB RAM 
+      **Mittelfristige Prognose (2026-2027):** Basierend auf den aktuellen Trends erwarten wir eine Fortsetzung des Wachstums bei
+        moderaten Raten. Für 2026 prognostizieren wir einen Gesamtbedarf von etwa 15.000 vCPU-Kernen, 280 GPU-Kernen, 60.000 GB RAM
         und 950 TB Storage. Die Wachstumsraten werden sich voraussichtlich bei etwa 18-20% stabilisieren, da die initiale Migrationswelle
         von Legacy-Systemen abebbt.
 
-      **Investitionspriorisierung:** GPU-Kapazitäten erfordern die höchste Aufmerksamkeit aufgrund der starken Nachfrage, hohen Beschaffungskosten und Risiken von Lieferengpässen. 
-        Eine strategische Vorabinvestition in GPU-Ressourcen wird empfohlen, um Engpässe zu vermeiden. Storage-Wachstum erfordert kontinuierliche 
+      **Investitionspriorisierung:** GPU-Kapazitäten erfordern die höchste Aufmerksamkeit aufgrund der starken Nachfrage, hohen Beschaffungskosten und Risiken von Lieferengpässen.
+        Eine strategische Vorabinvestition in GPU-Ressourcen wird empfohlen, um Engpässe zu vermeiden. Storage-Wachstum erfordert kontinuierliche
         Investitionen in Hochleistungsspeicher und Backup-Infrastruktur.
 
-      **Zonale Entwicklungsstrategie:** Berlin als Innovationsstandort wird überproportional wachsen und erfordert flexible Kapazitätsplanungen. 
-        München bleibt der Haupttreiber für absolute Kapazitätserweiterungen. Frankfurt entwickelt sich zu einem vollwertigen Produktionsstandort 
+      **Zonale Entwicklungsstrategie:** Berlin als Innovationsstandort wird überproportional wachsen und erfordert flexible Kapazitätsplanungen.
+        München bleibt der Haupttreiber für absolute Kapazitätserweiterungen. Frankfurt entwickelt sich zu einem vollwertigen Produktionsstandort
         und benötigt entsprechende Infrastrukturinvestitionen.
 
       **Kostenoptimierung:** Durch die Implementierung von Cluster-Autoscaling und ressourcenbasierter Abrechnung können Effizienzgewinne von
         15-20% realisiert werden. Die Einführung von Spot-Instances für nicht-kritische Workloads kann weitere Kosteneinsparungen ermöglichen.
       ## Empfehlungen und Nächste Schritte
 
-      Die Kapazitätsplanung sollte quartalsweise überprüft und angepasst werden, um auf sich ändernde Geschäftsanforderungen reagieren zu 
-        können. Die Implementierung von Monitoring-Tools für Ressourcennutzung und Predictive Analytics wird empfohlen, um die Planungsgenauigkeit 
+      Die Kapazitätsplanung sollte quartalsweise überprüft und angepasst werden, um auf sich ändernde Geschäftsanforderungen reagieren zu
+        können. Die Implementierung von Monitoring-Tools für Ressourcennutzung und Predictive Analytics wird empfohlen, um die Planungsgenauigkeit
         zu verbessern.
 
-      Eine strategische Partnerschaft mit Hardware-Anbietern für GPU-Kapazitäten sollte etabliert werden, um Lieferengpässe zu vermeiden. 
+      Eine strategische Partnerschaft mit Hardware-Anbietern für GPU-Kapazitäten sollte etabliert werden, um Lieferengpässe zu vermeiden.
         Die Evaluierung von Hybrid-Cloud-Szenarien für Spitzenlasten kann die Kapazitätsflexibilität erhöhen, ohne die Grundinvestition zu erhöhen.
 
-      
+
     questions_and_answers:
       - question: |
           Welche Kapazitätsprognose wird für 2026 erwartet?
@@ -110,7 +110,7 @@ seed_examples:
       ```bash
       # Gültige Namespace-Namen
       ref416-shop-dev
-      ref416-shop-qs  
+      ref416-shop-qs
       ref416-shop-prod
       fin-api-dev
       fin-api-prod
@@ -140,7 +140,7 @@ seed_examples:
       cpk.quay.asg.net/ref416-oracle-dev/api:develop
       ```
 
-      
+
     questions_and_answers:
       - question: |
           Wie lautet das Standard-Namensschema für Kubernetes Namespaces?
@@ -189,7 +189,7 @@ seed_examples:
       | **Tekton Pipelines** | CI/CD Pipelines | Native Kubernetes CI/CD mit ClusterTask "save-pipeline-logs" | ICP-Team | ICP-Team | ICP-Team | Empfohlen | Niedrig | Standard für Image-Builds |
       | **Jenkins** | Legacy CI/CD | Bestehende Jenkins-Instanzen für Migration | DevOps-Team | External-ISV | DevOps-Team | Migration geplant | Hoch | Ablösung durch Tekton |
       | **Helm 3** | Package Management | Kubernetes-Anwendungspaketierung (MUSS-Kriterium) | Applikationsteams | Applikationsteams | ICP-Team | Verpflichtend | Niedrig | Helm 2 nicht mehr unterstützt |
-     
+
     questions_and_answers:
       - question: |
           Welche Rolle spielt Red Hat OpenShift in der ICP-Toollandschaft und wer ist dafür zuständig?
@@ -203,7 +203,7 @@ seed_examples:
       - question: |
           Warum ist Helm 3 verpflichtend und welche Plattform-Empfehlung hat Red Hat Quay (CPK)?
         answer: |
-          Helm3 ist verpflichtend, weil die Unterstützung von Helm2 beendet wurde. 
+          Helm3 ist verpflichtend, weil die Unterstützung von Helm2 beendet wurde.
           RedHat Quay hat eine verpflichtende Empfehlung als Standard Container Registry.
   #############
   # Context 5 #
@@ -269,7 +269,7 @@ seed_examples:
       - Smoke Tests bestanden
       - Rollback Plan dokumentiert
 
-      
+
     questions_and_answers:
       - question: |
           Wie sieht die vierstufige Image Promotion Pipeline aus und welche Namespaces werden durchlaufen?
@@ -288,5 +288,10 @@ seed_examples:
           Die Kernunterschiede sind:
             - Staging konzentriert sich auf technische Qualitätssicherung (Sicherheit, Tests, Performance)
             - Pre-Production ist fokussiert auf organisatorische Freigabe-Prozesse (Genehmigungen, Dokumentation, Rollback-Planung)
-            - Der Übergang von automatisiert (Staging) zu manuell kontrolliert (Pre-Production) spiegelt die zunehmende 
+            - Der Übergang von automatisiert (Staging) zu manuell kontrolliert (Pre-Production) spiegelt die zunehmende
               Kritikalität im Promotion Prozess wider
+document:
+  repo: "https://github.com/mamurak/rhoai_sc_q2_taxonomy.git"
+  commit: fe5b6e4ca5f9939a22ffc8c5c9761ef6385416ec
+  patterns:
+    - "documents/plattform_architektur/*.md"
